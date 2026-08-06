@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { X } from "lucide-react";
-import { Button } from "@/components/ui/Button";
 
 interface TicketModalProps {
   tierName: string;
@@ -119,9 +118,11 @@ export function TicketModal({ tierName, tierPrice, onClose }: TicketModalProps) 
                 <span className="text-xl font-bold text-white">KES {totalAmount.toLocaleString()}</span>
               </div>
 
-              {error && <p className="text-red-400 text-xs bg-red-400/10 border border-red-400/20 rounded-md px-2 py-1.5">{error}</p>}
-              
-              <Button className="w-full" onClick={handlePay}>Pay via M-Pesa</Button>
+              {error && <p className="font-ciutadella font-light text-[13px] text-red-400/80 tracking-normal">{error}</p>}
+
+              <button onClick={handlePay} className="w-full bg-bone-white text-void-black font-enreal font-light text-[13px] tracking-normal py-[10px] hover:opacity-80 transition-opacity">
+                → Pay via M-Pesa
+              </button>
             </div>
           )}
 
@@ -135,20 +136,23 @@ export function TicketModal({ tierName, tierPrice, onClose }: TicketModalProps) 
 
           {step === "success" && (
             <div className="text-center py-6 space-y-4">
-              <div className="text-5xl mb-2">📱</div>
-              <p className="font-heading text-white font-bold text-lg">Check your phone!</p>
-              <p className="text-foreground/60 text-sm leading-relaxed">
-                We've sent an M-Pesa payment prompt to your phone. Enter your PIN to complete the purchase of KES {totalAmount.toLocaleString()}.
+              <p className="font-enreal font-light text-[22px] text-bone-white tracking-cinematic">Check your phone</p>
+              <p className="font-ciutadella font-light text-[13px] text-bone-white/40 tracking-normal leading-relaxed">
+                We've sent an M-Pesa prompt to your phone.<br />Enter your PIN to complete KES {totalAmount.toLocaleString()}.
               </p>
-              <Button onClick={onClose} variant="outline" className="w-full mt-2">Close</Button>
+              <button onClick={onClose} className="mt-2 inline-flex items-center justify-center bg-charcoal text-bone-white font-enreal font-light text-[13px] tracking-normal px-[16px] py-[8px] border border-ash/40 hover:opacity-80 transition-opacity">
+                close
+              </button>
             </div>
           )}
 
           {step === "error" && (
             <div className="text-center py-6 space-y-4">
-              <div className="text-5xl mb-2">❌</div>
-              <p className="text-red-400 font-semibold">{error}</p>
-              <Button onClick={() => setStep("details")} className="w-full">Try Again</Button>
+              <p className="font-enreal font-light text-[18px] text-bone-white tracking-cinematic">Something went wrong</p>
+              <p className="font-ciutadella font-light text-[13px] text-red-400/70 tracking-normal">{error}</p>
+              <button onClick={() => setStep("details")} className="mt-2 inline-flex items-center gap-2 bg-bone-white text-void-black font-enreal font-light text-[13px] tracking-normal px-[16px] py-[8px] hover:opacity-80 transition-opacity">
+                → try again
+              </button>
             </div>
           )}
         </div>
