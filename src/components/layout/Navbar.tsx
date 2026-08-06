@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { Button } from "@/components/ui/Button";
 import { Menu, X, Music } from "lucide-react";
 
 const navLinks = [
@@ -43,8 +44,12 @@ export function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-3">
-          <Link href="/login" className="inline-flex items-center bg-charcoal text-bone-white font-enreal font-light text-[13px] tracking-normal px-[16px] py-[8px] border border-ash hover:opacity-80 transition-opacity">Login</Link>
-          <Link href="/nominees" className="inline-flex items-center bg-bone-white text-void-black font-enreal font-light text-[13px] tracking-normal px-[16px] py-[8px] hover:opacity-80 transition-opacity">Vote Now</Link>
+          <Button variant="outline" size="sm" asChild>
+            <Link href="/login">Login</Link>
+          </Button>
+          <Button size="sm" asChild>
+            <Link href="/nominees">Vote Now</Link>
+          </Button>
         </div>
 
         {/* Mobile toggle */}
@@ -70,9 +75,13 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
-          <div className="flex gap-3 pt-3 border-t border-bone-white/10">
-            <Link href="/login" className="flex-1 inline-flex items-center justify-center bg-charcoal text-bone-white font-enreal font-light text-[13px] tracking-normal px-[16px] py-[8px] border border-ash hover:opacity-80 transition-opacity">Login</Link>
-            <Link href="/nominees" className="flex-1 inline-flex items-center justify-center bg-bone-white text-void-black font-enreal font-light text-[13px] tracking-normal px-[16px] py-[8px] hover:opacity-80 transition-opacity">Vote Now</Link>
+          <div className="flex gap-3 pt-3 border-t border-border">
+            <Button variant="outline" size="sm" className="flex-1" asChild>
+              <Link href="/login">Login</Link>
+            </Button>
+            <Button size="sm" className="flex-1" asChild>
+              <Link href="/nominees">Vote Now</Link>
+            </Button>
           </div>
         </div>
       )}

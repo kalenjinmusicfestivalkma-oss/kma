@@ -1,55 +1,119 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { WayfinderIllustration } from "@/components/shared/WayfinderIllustration";
-import { CornerClusters } from "@/components/layout/CornerClusters";
+import { Button } from "@/components/ui/Button";
 
-export const metadata: Metadata = { title: "News" };
+export const metadata: Metadata = {
+  title: "News | Kalenjin Music Awards 2026",
+  description: "Latest news, updates, and announcements from the Kalenjin Music Awards 2026.",
+};
 
-const articles = [
-  { slug: "nominations-open",     title: "Nominations Are Now Open",                  date: "Aug 1, 2026",  category: "Nominations" },
-  { slug: "safaricom-sponsor",     title: "Safaricom Confirmed as Platinum Sponsor",   date: "Jul 22, 2026", category: "Partnerships" },
-  { slug: "venue-announced",       title: "Event Venue: Eldoret Sports Club",          date: "Jul 15, 2026", category: "Event" },
-  { slug: "2025-highlights",       title: "KMA 2025 — A Night to Remember",            date: "Dec 5, 2025",  category: "Recap" },
+const newsArticles = [
+  {
+    id:       1,
+    slug:     "kma-2026-nominations-open",
+    category: "Nominations",
+    date:     "August 1, 2026",
+    title:    "KMA 2026 Nominations Are Now Open!",
+    excerpt:  "We are thrilled to announce that nominations for the 5th annual Kalenjin Music Awards are officially open. Artists in all 20 categories can now be nominated by the public.",
+    readTime: "3 min read",
+  },
+  {
+    id:       2,
+    slug:     "safaricom-headline-sponsor",
+    category: "Partnerships",
+    date:     "July 22, 2026",
+    title:    "Safaricom Confirmed as Platinum Sponsor for KMA 2026",
+    excerpt:  "We are proud to welcome Safaricom as the headline platinum sponsor for this year's ceremony. Their support will help us deliver an unforgettable night for Kalenjin music lovers.",
+    readTime: "2 min read",
+  },
+  {
+    id:       3,
+    slug:     "event-venue-announced",
+    category: "Event",
+    date:     "July 15, 2026",
+    title:    "Event Venue Announced: Eldoret Sports Club",
+    excerpt:  "The 2026 ceremony will take place at the iconic Eldoret Sports Club on September 20th. Capacity is limited — get your tickets early!",
+    readTime: "2 min read",
+  },
+  {
+    id:       4,
+    slug:     "kma-2025-highlights",
+    category: "Recap",
+    date:     "December 5, 2025",
+    title:    "KMA 2025: A Night to Remember — Full Highlights",
+    excerpt:  "The 4th annual Kalenjin Music Awards was an unforgettable celebration of talent. Solomon Sang took home the biggest prize of the night. Here's everything that happened.",
+    readTime: "5 min read",
+  },
 ];
 
 export default function NewsPage() {
   return (
-    <div className="relative w-screen h-screen overflow-hidden bg-void-black">
-      <WayfinderIllustration />
-      <CornerClusters />
-      <div className="absolute inset-0 bg-void-black/70 z-[5]" />
+    <div className="flex flex-col">
+      {/* Hero */}
+      <section className="py-20 px-4 md:px-6 text-center">
+        <div className="container mx-auto max-w-2xl">
+          <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">Stay Updated</span>
+          <h1 className="font-heading text-5xl md:text-6xl font-bold mt-4 mb-4 text-white">
+            Latest <span className="text-primary-gold">News</span>
+          </h1>
+          <p className="text-foreground/60 text-lg">
+            Announcements, artist stories, and updates from the world of Kalenjin music.
+          </p>
+        </div>
+      </section>
 
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6">
-        <p className="font-ciutadella text-[13px] font-light tracking-normal text-bone-white/40 uppercase mb-4">Dispatch</p>
-        <h1 className="font-enreal font-light text-bone-white text-center uppercase tracking-cinematic mb-10"
-          style={{ fontSize: "clamp(28px, 5vw, 56px)" }}>
-          Latest News
-        </h1>
-
-        <div className="w-full max-w-xl border-t border-bone-white/10">
-          {articles.map((a, i) => (
-            <div key={i} className="flex items-start justify-between gap-6 py-5 border-b border-bone-white/10 group cursor-pointer hover:bg-bone-white/5 transition-colors">
-              <div className="flex-1">
-                <p className="font-enreal font-light text-[16px] text-bone-white tracking-cinematic group-hover:opacity-80 transition-opacity">
-                  {a.title}
-                </p>
-                <div className="flex items-center gap-3 mt-1.5">
-                  <span className="font-ciutadella font-light text-[12px] text-bone-white/30 tracking-normal">{a.date}</span>
-                  <span className="w-1 h-1 rounded-full bg-bone-white/20" />
-                  <span className="font-ciutadella font-light text-[12px] text-bone-white/30 tracking-normal">{a.category}</span>
-                </div>
-              </div>
-              <span className="font-enreal text-[16px] text-bone-white/20 mt-1 group-hover:text-bone-white/50 transition-colors">→</span>
+      {/* Articles */}
+      <section className="py-12 px-4 md:px-6 pb-24">
+        <div className="container mx-auto max-w-4xl">
+          {/* Featured article */}
+          <div className="mb-8 rounded-2xl border border-primary-gold/30 bg-surface overflow-hidden hover:border-primary-gold/50 transition-colors group cursor-pointer">
+            <div className="h-56 bg-gradient-to-br from-kalenjin-maroon/20 via-background to-primary-gold/10 flex items-center justify-center">
+              <span className="text-6xl">📰</span>
             </div>
-          ))}
-        </div>
+            <div className="p-8">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="rounded-full bg-primary-gold/10 border border-primary-gold/30 px-3 py-0.5 text-xs text-primary-gold font-medium">
+                  {newsArticles[0].category}
+                </span>
+                <span className="text-foreground/40 text-xs">{newsArticles[0].date} · {newsArticles[0].readTime}</span>
+              </div>
+              <h2 className="font-heading text-2xl font-bold text-white group-hover:text-primary-gold transition-colors mb-3">
+                {newsArticles[0].title}
+              </h2>
+              <p className="text-foreground/60 leading-relaxed mb-5">{newsArticles[0].excerpt}</p>
+              <Button variant="outline" size="sm" asChild>
+                <Link href={`/news/${newsArticles[0].slug}`}>Read More →</Link>
+              </Button>
+            </div>
+          </div>
 
-        <div className="mt-8">
-          <Link href="/" className="inline-flex items-center justify-center bg-charcoal text-bone-white font-enreal font-light text-[13px] tracking-normal px-[16px] py-[8px] border border-ash hover:opacity-80 transition-opacity">
-            back
-          </Link>
+          {/* Other articles */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {newsArticles.slice(1).map((article) => (
+              <Link
+                key={article.id}
+                href={`/news/${article.slug}`}
+                className="group rounded-xl border border-border bg-surface overflow-hidden hover:border-primary-gold/30 transition-all"
+              >
+                <div className="h-36 bg-gradient-to-br from-kalenjin-green/10 via-background to-kalenjin-maroon/10 flex items-center justify-center text-3xl">
+                  📣
+                </div>
+                <div className="p-5">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="rounded-full bg-surface-hover px-2.5 py-0.5 text-xs text-foreground/60">{article.category}</span>
+                    <span className="text-foreground/30 text-xs">{article.readTime}</span>
+                  </div>
+                  <h3 className="font-heading font-semibold text-white text-sm group-hover:text-primary-gold transition-colors leading-snug mb-2">
+                    {article.title}
+                  </h3>
+                  <p className="text-foreground/50 text-xs leading-relaxed line-clamp-2">{article.excerpt}</p>
+                  <p className="text-foreground/30 text-xs mt-3">{article.date}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

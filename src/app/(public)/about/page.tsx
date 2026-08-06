@@ -1,61 +1,140 @@
 import type { Metadata } from "next";
+import { Button } from "@/components/ui/Button";
 import Link from "next/link";
-import { WayfinderIllustration } from "@/components/shared/WayfinderIllustration";
-import { CornerClusters } from "@/components/layout/CornerClusters";
+import { Trophy, Users, Music, Target, Globe, Heart } from "lucide-react";
 
-export const metadata: Metadata = { title: "About" };
+export const metadata: Metadata = {
+  title: "About | Kalenjin Music Awards 2026",
+  description: "Learn about the Kalenjin Music Awards — celebrating excellence in Kalenjin music and culture since 2021.",
+};
+
+const values = [
+  { icon: Trophy,  title: "Excellence",   desc: "Recognizing the highest standards of artistic achievement and musical innovation." },
+  { icon: Music,   title: "Heritage",     desc: "Celebrating and preserving the rich tapestry of Kalenjin musical traditions." },
+  { icon: Users,   title: "Community",    desc: "Building bridges between artists, fans, and cultural institutions across the region." },
+  { icon: Target,  title: "Impact",       desc: "Creating opportunities for artists to reach wider audiences and achieve their dreams." },
+  { icon: Globe,   title: "Visibility",   desc: "Putting Kalenjin music on the global stage and inspiring the next generation." },
+  { icon: Heart,   title: "Passion",      desc: "Driven by genuine love for the art form and the communities that gave birth to it." },
+];
+
+const team = [
+  { name: "Daniel Kiprotich",   role: "Founder & Chairman",          initials: "DK" },
+  { name: "Agnes Chebet",       role: "Executive Director",           initials: "AC" },
+  { name: "Victor Rotich",      role: "Head of Nominations",          initials: "VR" },
+  { name: "Mercy Koech",        role: "Head of Events & Ticketing",   initials: "MK" },
+  { name: "Brian Lagat",        role: "Director of Partnerships",     initials: "BL" },
+  { name: "Grace Chepkemoi",    role: "Marketing & Communications",   initials: "GC" },
+];
 
 export default function AboutPage() {
   return (
-    <div className="relative w-screen h-screen overflow-hidden bg-void-black">
-      <WayfinderIllustration />
-      <CornerClusters />
-      <div className="absolute inset-0 bg-void-black/70 z-[5]" />
-
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 max-w-2xl mx-auto text-center">
-        <p className="font-ciutadella text-[13px] font-light tracking-normal text-bone-white/40 uppercase mb-5">
-          Who We Are
-        </p>
-        <h1
-          className="font-enreal font-light text-bone-white text-center uppercase tracking-cinematic mb-8"
-          style={{ fontSize: "clamp(28px, 5vw, 56px)" }}
-        >
-          About KMA
-        </h1>
-
-        <p className="font-enreal font-light text-[16px] text-bone-white/60 leading-[1.75] tracking-cinematic mb-4 max-w-lg">
-          The Kalenjin Music Awards (KMA) is the premier platform celebrating
-          excellence in Kalenjin music and culture.
-        </p>
-        <p className="font-ciutadella font-light text-[14px] text-bone-white/40 leading-[1.75] tracking-normal max-w-lg">
-          Now in its 3rd Edition, KMA honours artists across gospel, secular,
-          upcoming talent, and beyond — from the North Rift to the South Rift,
-          from the diaspora to the digital stage.
-        </p>
-
-        {/* Stats row */}
-        <div className="flex items-start justify-center gap-12 mt-10 border-t border-bone-white/10 pt-8">
-          {[
-            { v: "39",    l: "Categories" },
-            { v: "2026",  l: "3rd Edition" },
-            { v: "Sept 20", l: "Gala Night" },
-          ].map((s) => (
-            <div key={s.l} className="flex flex-col items-center">
-              <span className="font-enreal font-light text-[28px] text-bone-white tracking-cinematic">{s.v}</span>
-              <span className="font-ciutadella font-light text-[13px] text-bone-white/35 tracking-normal mt-1">{s.l}</span>
-            </div>
-          ))}
+    <div className="flex flex-col">
+      {/* Hero */}
+      <section className="relative py-24 px-4 md:px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-kalenjin-maroon/10 via-background to-kalenjin-green/10 pointer-events-none" />
+        <div className="container mx-auto max-w-4xl text-center relative z-10">
+          <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">Our Story</span>
+          <h1 className="font-heading text-5xl md:text-6xl font-bold mt-4 mb-6 text-white">
+            About <span className="text-primary-gold">KMA</span>
+          </h1>
+          <p className="text-foreground/70 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
+            The Kalenjin Music Awards is the premier platform dedicated to celebrating and promoting 
+            outstanding talent in Kalenjin music. Since our founding, we have honored artists who 
+            keep our cultural heritage alive while pushing creative boundaries.
+          </p>
         </div>
+      </section>
 
-        <div className="flex items-center gap-[30px] mt-10">
-          <Link href="/nominees" className="inline-flex items-center gap-2 bg-bone-white text-void-black font-enreal font-light text-[13px] tracking-normal px-[16px] py-[8px] hover:opacity-80 transition-opacity">
-            → start voting
-          </Link>
-          <Link href="/" className="inline-flex items-center justify-center bg-charcoal text-bone-white font-enreal font-light text-[13px] tracking-normal px-[16px] py-[8px] border border-ash hover:opacity-80 transition-opacity">
-            back
-          </Link>
+      {/* Mission */}
+      <section className="py-20 px-4 md:px-6 bg-surface/50">
+        <div className="container mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div>
+            <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">Our Mission</span>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3 mb-5 text-white">
+              Amplifying the Voice of Kalenjin Music
+            </h2>
+            <p className="text-foreground/60 leading-relaxed mb-4">
+              We believe that music is the heartbeat of culture. The Kalenjin Music Awards was founded 
+              to create a prestigious platform that recognizes artistic excellence, encourages cultural 
+              preservation, and provides a spotlight for both established and emerging artists.
+            </p>
+            <p className="text-foreground/60 leading-relaxed">
+              Our annual ceremony brings together artists, fans, industry leaders, and cultural 
+              ambassadors to celebrate what makes Kalenjin music uniquely powerful — its storytelling, 
+              rhythm, and deep connection to the Rift Valley way of life.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              { num: "5th",  label: "Annual Edition"    },
+              { num: "20+",  label: "Award Categories"  },
+              { num: "80+",  label: "Nominees in 2026"  },
+              { num: "50K+", label: "Community Voters"  },
+            ].map((stat) => (
+              <div key={stat.label} className="rounded-xl border border-border bg-surface p-6 text-center">
+                <div className="font-heading text-4xl font-bold text-primary-gold mb-1">{stat.num}</div>
+                <div className="text-foreground/50 text-sm">{stat.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* Values */}
+      <section className="py-20 px-4 md:px-6">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-14">
+            <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">What We Stand For</span>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3 text-white">Our Core Values</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {values.map(({ icon: Icon, title, desc }) => (
+              <div key={title} className="rounded-xl border border-border bg-surface p-6 hover:border-primary-gold/30 transition-colors">
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary-gold/10 mb-4">
+                  <Icon className="h-5 w-5 text-primary-gold" />
+                </div>
+                <h3 className="font-heading font-semibold text-white mb-2">{title}</h3>
+                <p className="text-foreground/50 text-sm leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team */}
+      <section className="py-20 px-4 md:px-6 bg-surface/50">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-14">
+            <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">The People Behind KMA</span>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3 text-white">Meet the Team</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {team.map((member) => (
+              <div key={member.name} className="flex items-center gap-4 rounded-xl border border-border bg-surface p-5">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary-gold/30 to-kalenjin-maroon/30 border border-primary-gold/20">
+                  <span className="font-heading font-bold text-sm text-primary-gold">{member.initials}</span>
+                </div>
+                <div>
+                  <p className="font-heading font-semibold text-white text-sm">{member.name}</p>
+                  <p className="text-foreground/50 text-xs mt-0.5">{member.role}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 px-4 md:px-6">
+        <div className="container mx-auto max-w-2xl text-center">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">Ready to Celebrate?</h2>
+          <p className="text-foreground/60 mb-8">Cast your vote, get your tickets, and be part of the biggest night in Kalenjin music.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" asChild><Link href="/nominees">Vote Now</Link></Button>
+            <Button size="lg" variant="outline" asChild><Link href="/tickets">Get Tickets</Link></Button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

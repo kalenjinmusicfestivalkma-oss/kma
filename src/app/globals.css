@@ -4,7 +4,6 @@
 
 @layer base {
   :root {
-    /* KMA Site tokens */
     --background: 0 0% 4%;
     --foreground: 0 0% 93%;
     --primary-gold: 43 68% 52%;
@@ -14,16 +13,8 @@
     --surface: 0 0% 9%;
     --surface-hover: 0 0% 15%;
     --border: 0 0% 20%;
-
-    /* Wayfinder palette (for hero illustration layer) */
-    --color-void-black: #000000;
-    --color-smolder-earth: #0b0502;
-    --color-charcoal: #1a1a1a;
-    --color-bone-white: #ffffff;
-    --color-ash: #e3e3e2;
-    --color-driftwood: #c0bfbe;
   }
-
+  
   body {
     @apply bg-background text-foreground font-sans;
     -webkit-font-smoothing: antialiased;
@@ -36,7 +27,7 @@
     background-image: radial-gradient(hsl(var(--border)) 1px, transparent 1px);
     background-size: 28px 28px;
   }
-
+  
   .font-heading {
     font-family: var(--font-outfit), sans-serif;
   }
