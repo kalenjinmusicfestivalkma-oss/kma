@@ -26,6 +26,15 @@ const config: Config = {
       backgroundImage: {
         "gradient-gold": "linear-gradient(135deg, hsl(var(--primary-gold)), #f5e27a)",
       },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        marquee: "marquee 20s linear infinite",
+      },
     },
   },
   plugins: [],

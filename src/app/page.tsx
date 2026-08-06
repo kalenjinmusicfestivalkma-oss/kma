@@ -211,18 +211,26 @@ function VotingCTA() {
 
 function SponsorsSection() {
   return (
-    <section className="py-20 px-4 md:px-6 border-t border-border">
-      <div className="container mx-auto max-w-5xl">
-        <p className="text-center text-foreground/40 text-sm uppercase tracking-widest font-medium mb-10">
+    <section className="py-20 border-t border-border overflow-hidden">
+      <div className="container mx-auto max-w-5xl px-4 md:px-6 mb-10">
+        <p className="text-center text-foreground/40 text-sm uppercase tracking-widest font-medium">
           Proudly Supported By
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-8">
-          {sponsors.map((sponsor) => (
+      </div>
+      
+      {/* Marquee Container */}
+      <div className="relative w-full flex overflow-hidden">
+        {/* Left/Right fading gradients for smooth entry/exit */}
+        <div className="absolute top-0 left-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute top-0 right-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+        
+        <div className="flex w-max animate-marquee gap-8 px-4 hover:[animation-play-state:paused]">
+          {[...sponsors, ...sponsors, ...sponsors].map((sponsor, idx) => (
             <div
-              key={sponsor.name}
-              className="group flex flex-col items-center gap-2 rounded-lg border border-border bg-surface px-8 py-5 hover:border-primary-gold/30 transition-all duration-200 min-w-[140px]"
+              key={`${sponsor.name}-${idx}`}
+              className="group flex flex-col items-center justify-center gap-2 rounded-lg border border-border bg-surface px-8 py-5 hover:border-primary-gold/30 transition-all duration-200 w-[180px] shrink-0"
             >
-              <span className="font-heading font-bold text-lg text-white/80 group-hover:text-white transition-colors">
+              <span className="font-heading font-bold text-lg text-white/80 group-hover:text-white transition-colors text-center">
                 {sponsor.name}
               </span>
               <span className={`text-xs font-medium ${
@@ -237,6 +245,9 @@ function SponsorsSection() {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="container mx-auto max-w-5xl px-4 md:px-6">
         <div className="text-center mt-10">
           <Button variant="ghost" size="sm" asChild>
             <Link href="/sponsors">Become a Sponsor →</Link>
