@@ -9,8 +9,12 @@ const navLinks = [
   { href: "/about", label: "About" },
   { href: "/categories", label: "Categories" },
   { href: "/nominees", label: "Nominees" },
-  { href: "/winners", label: "Winners" },
+  { href: "/nominees", label: "Vote" },
+  { href: "/winners", label: "Past Winners" },
+  { href: "/news", label: "News" },
   { href: "/tickets", label: "Tickets" },
+  { href: "/sponsors", label: "Sponsors" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {
