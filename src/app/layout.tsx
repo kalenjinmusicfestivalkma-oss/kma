@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
+import { Jost, Karla } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+// Wayfinder fonts: Jost acts as Enreal (thin, geometric sans)
+const enreal = Jost({ 
   subsets: ["latin"],
+  weight: ["300", "400", "700"],
+  variable: "--font-enreal",
 });
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+// Karla acts as Ciutadella-Medium (tight line-height, texturally quiet)
+const ciutadella = Karla({ 
   subsets: ["latin"],
+  weight: ["300"],
+  variable: "--font-ciutadella",
 });
 
 export const metadata: Metadata = {
@@ -19,21 +21,7 @@ export const metadata: Metadata = {
     default: "Kalenjin Music Awards (KMA)",
     template: "%s | Kalenjin Music Awards",
   },
-  description: "The premier platform celebrating excellence in Kalenjin music and culture.",
-  keywords: ["Kalenjin", "Music", "Awards", "Rift Valley", "KMA", "Kenya"],
-  openGraph: {
-    title: "Kalenjin Music Awards",
-    description: "Celebrating excellence in Kalenjin music and culture.",
-    url: "https://kma2026.example.com",
-    siteName: "Kalenjin Music Awards",
-    locale: "en_KE",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Kalenjin Music Awards",
-    description: "Celebrating excellence in Kalenjin music and culture.",
-  },
+  description: "Celebrating excellence in Kalenjin music and culture.",
 };
 
 export default function RootLayout({
@@ -42,11 +30,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+    <html lang="en">
+      <body className={`${enreal.variable} ${ciutadella.variable} font-enreal tracking-cinematic bg-void-black text-bone-white antialiased`}>
+        {/* Full-viewport canvas. No Navbar, no Footer. */}
+        <main className="relative w-screen h-screen overflow-hidden">
+          {children}
+        </main>
       </body>
     </html>
   );

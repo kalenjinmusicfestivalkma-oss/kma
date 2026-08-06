@@ -2,177 +2,144 @@
 
 import { useState } from "react";
 import { X } from "lucide-react";
-import { Button } from "@/components/ui/Button";
-import Link from "next/link";
-
-interface Nominee {
-  id: number;
-  name: string;
-  genre: string;
-  category: string;
-}
 
 interface VotingModalProps {
-  nominee: Nominee;
-  categoryName: string;
+  nominee: { id: number; name: string; genre: string; category: string };
   onClose: () => void;
 }
 
 type Step = "confirm" | "otp" | "success" | "error";
 
-export function VotingModal({ nominee, categoryName, onClose }: VotingModalProps) {
+export function VotingModal({ nominee, onClose }: VotingModalProps) {
   const [step, setStep] = useState<Step>("confirm");
+  const [phone, setPhone] = useState("");
   const [otp, setOtp] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
   const handleRequestOtp = async () => {
-    setIsLoading(true);
+    if (!phone) { setError("Enter your phone number"); return; }
     setError("");
     try {
       const res = await fetch("/api/votes/request-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nomineeId: nominee.id, category: nominee.category }),
+        body: JSON.stringify({ phone }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Failed to send OTP");
       setStep("otp");
-    } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
-    } finally {
-      setIsLoading(false);
+    } catch (e: any) {
+      setError(e.message);
     }
   };
 
   const handleSubmitVote = async () => {
-    if (otp.length < 6) return;
-    setIsLoading(true);
+    if (!otp) { setError("Enter the OTP"); return; }
     setError("");
     try {
       const res = await fetch("/api/votes/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nomineeId: nominee.id, category: nominee.category, otp }),
+        body: JSON.stringify({ phone, otp, nomineeId: nominee.id, category: nominee.category }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Vote submission failed");
+      if (!res.ok) throw new Error(data.error || "Failed to submit vote");
       setStep("success");
-    } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } catch (e: any) {
+      setError(e.message);
       setStep("error");
-    } finally {
-      setIsLoading(false);
     }
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
+      <div className="absolute inset-0 bg-void-black/80 backdrop-blur-sm" onClick={onClose} />
 
-      {/* Modal */}
-      <div className="relative w-full max-w-md rounded-2xl border border-border bg-surface shadow-2xl shadow-black/50 overflow-hidden">
+      {/* Modal — Wayfinder: no radius, charcoal bg, ash border */}
+      <div className="relative w-full max-w-sm bg-charcoal border border-ash/30 overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-border">
-          <h2 className="font-heading text-lg font-bold text-white">
-            {step === "success" ? "🎉 Vote Cast!" : step === "error" ? "Vote Failed" : "Cast Your Vote"}
-          </h2>
-          <button
-            id="voting-modal-close"
-            onClick={onClose}
-            className="flex h-8 w-8 items-center justify-center rounded-md text-foreground/50 hover:text-white hover:bg-surface-hover transition-all"
-          >
-            <X className="h-4 w-4" />
+        <div className="flex items-center justify-between px-5 py-4 border-b border-bone-white/10">
+          <p className="font-ciutadella font-light text-[13px] text-bone-white/40 tracking-normal uppercase">Cast Vote</p>
+          <button onClick={onClose} className="text-bone-white/40 hover:text-bone-white transition-colors">
+            <X className="w-4 h-4" />
           </button>
         </div>
 
-        <div className="p-6">
-          {/* Nominee info */}
-          {step !== "success" && (
-            <div className="flex items-center gap-3 mb-6 rounded-xl border border-border bg-background/50 p-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-gold/10 border border-primary-gold/20">
-                <span className="text-primary-gold font-bold text-sm">
-                  {nominee.name.charAt(0)}
-                </span>
+        <div className="px-5 py-6">
+          {step === "confirm" && (
+            <div className="space-y-5">
+              <div>
+                <h2 className="font-enreal font-light text-[20px] text-bone-white tracking-cinematic">{nominee.name}</h2>
+                <p className="font-ciutadella font-light text-[13px] text-bone-white/35 tracking-normal mt-0.5">{nominee.genre}</p>
               </div>
               <div>
-                <p className="font-heading font-semibold text-white text-sm">{nominee.name}</p>
-                <p className="text-foreground/50 text-xs mt-0.5">{categoryName}</p>
+                <label className="block font-ciutadella font-light text-[13px] text-bone-white/40 tracking-normal mb-2">
+                  Phone number for OTP verification
+                </label>
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="2547XXXXXXXX"
+                  className="w-full bg-void-black border border-bone-white/15 px-3 py-2.5 text-bone-white font-enreal font-light text-[14px] tracking-cinematic placeholder:text-bone-white/20 focus:outline-none focus:border-bone-white/40 transition-colors"
+                />
               </div>
-            </div>
-          )}
-
-          {/* Step: Confirm */}
-          {step === "confirm" && (
-            <div className="space-y-4">
-              <div className="rounded-lg border border-border bg-background/40 p-3 text-xs text-foreground/50 space-y-1">
-                <p>🛡️ <strong className="text-foreground/70">Anti-fraud Protection:</strong> One vote per phone number per category.</p>
-                <p>📱 An OTP will be sent to your registered phone to verify your vote.</p>
-              </div>
-              {error && <p className="text-red-400 text-sm bg-red-400/10 border border-red-400/20 rounded-lg px-3 py-2">{error}</p>}
-              <Button className="w-full" onClick={handleRequestOtp} disabled={isLoading}>
-                {isLoading ? "Sending OTP..." : "Send OTP to Verify"}
-              </Button>
-              <p className="text-center text-xs text-foreground/40">
-                Not registered?{" "}
-                <Link href="/register" className="text-primary-gold hover:underline" onClick={onClose}>
-                  Create account first
-                </Link>
-              </p>
-            </div>
-          )}
-
-          {/* Step: OTP */}
-          {step === "otp" && (
-            <div className="space-y-4">
-              <p className="text-foreground/60 text-sm">
-                Enter the 6-digit OTP sent to your registered phone number. Valid for 10 minutes.
-              </p>
-              <input
-                id="vote-otp-input"
-                type="text"
-                inputMode="numeric"
-                maxLength={6}
-                value={otp}
-                onChange={(e) => setOtp(e.target.value.replace(/\D/g, "").slice(0, 6))}
-                placeholder="Enter 6-digit code"
-                className="w-full rounded-lg border border-border bg-background px-4 py-3 text-center text-xl font-bold text-white tracking-widest placeholder:text-foreground/20 placeholder:text-base placeholder:tracking-normal focus:outline-none focus:ring-2 focus:ring-primary-gold/50 transition"
-              />
-              {error && <p className="text-red-400 text-sm bg-red-400/10 border border-red-400/20 rounded-lg px-3 py-2">{error}</p>}
-              <Button
-                id="submit-vote-btn"
-                className="w-full"
-                onClick={handleSubmitVote}
-                disabled={otp.length < 6 || isLoading}
+              {error && <p className="font-ciutadella font-light text-[13px] text-red-400/80 tracking-normal">{error}</p>}
+              <button
+                onClick={handleRequestOtp}
+                className="w-full bg-bone-white text-void-black font-enreal font-light text-[13px] tracking-normal py-[10px] hover:opacity-80 transition-opacity"
               >
-                {isLoading ? "Submitting Vote..." : "Submit Vote"}
-              </Button>
-              <button onClick={() => setStep("confirm")} className="w-full text-center text-xs text-foreground/40 hover:text-foreground/70 transition-colors">
-                ← Back
+                → send verification code
               </button>
             </div>
           )}
 
-          {/* Step: Success */}
-          {step === "success" && (
-            <div className="text-center py-4 space-y-4">
-              <div className="text-5xl mb-2">🏆</div>
-              <p className="font-heading text-white font-semibold">You voted for <span className="text-primary-gold">{nominee.name}</span>!</p>
-              <p className="text-foreground/50 text-sm">Your vote has been verified and recorded. Thank you for participating!</p>
-              <div className="rounded-lg border border-kalenjin-green/30 bg-kalenjin-green/10 px-4 py-3 text-sm text-kalenjin-green/80">
-                ✓ Vote confirmed • Anti-fraud check passed
+          {step === "otp" && (
+            <div className="space-y-5">
+              <div>
+                <h2 className="font-enreal font-light text-[18px] text-bone-white tracking-cinematic">Enter Code</h2>
+                <p className="font-ciutadella font-light text-[13px] text-bone-white/35 tracking-normal mt-0.5">
+                  We sent a 6-digit code to {phone}
+                </p>
               </div>
-              <Button onClick={onClose} variant="outline" className="w-full">Close</Button>
+              <input
+                type="text"
+                maxLength={6}
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
+                placeholder="— — — — — —"
+                className="w-full bg-void-black border border-bone-white/15 px-3 py-2.5 text-bone-white font-enreal font-light text-[20px] tracking-[0.4em] text-center placeholder:text-bone-white/10 focus:outline-none focus:border-bone-white/40 transition-colors"
+              />
+              {error && <p className="font-ciutadella font-light text-[13px] text-red-400/80 tracking-normal">{error}</p>}
+              <button
+                onClick={handleSubmitVote}
+                className="w-full bg-bone-white text-void-black font-enreal font-light text-[13px] tracking-normal py-[10px] hover:opacity-80 transition-opacity"
+              >
+                → confirm vote
+              </button>
             </div>
           )}
 
-          {/* Step: Error */}
+          {step === "success" && (
+            <div className="py-4 text-center space-y-3">
+              <p className="font-enreal font-light text-[22px] text-bone-white tracking-cinematic">Vote Cast</p>
+              <p className="font-ciutadella font-light text-[13px] text-bone-white/40 tracking-normal">
+                Your vote for <span className="text-bone-white">{nominee.name}</span> has been recorded.
+              </p>
+              <button onClick={onClose} className="mt-4 inline-flex items-center justify-center bg-charcoal text-bone-white font-enreal font-light text-[13px] tracking-normal px-[16px] py-[8px] border border-ash/40 hover:opacity-80 transition-opacity">
+                close
+              </button>
+            </div>
+          )}
+
           {step === "error" && (
-            <div className="text-center py-4 space-y-4">
-              <div className="text-5xl mb-2">❌</div>
-              <p className="text-red-400 font-semibold">{error}</p>
-              <Button onClick={() => { setStep("confirm"); setError(""); }} className="w-full">Try Again</Button>
+            <div className="py-4 text-center space-y-3">
+              <p className="font-enreal font-light text-[18px] text-bone-white tracking-cinematic">Something went wrong</p>
+              <p className="font-ciutadella font-light text-[13px] text-red-400/70 tracking-normal">{error}</p>
+              <button onClick={() => setStep("confirm")} className="mt-4 inline-flex items-center gap-2 bg-bone-white text-void-black font-enreal font-light text-[13px] tracking-normal px-[16px] py-[8px] hover:opacity-80 transition-opacity">
+                → try again
+              </button>
             </div>
           )}
         </div>

@@ -1,89 +1,55 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
-import { Trophy } from "lucide-react";
+import { WayfinderIllustration } from "@/components/shared/WayfinderIllustration";
+import { CornerClusters } from "@/components/layout/CornerClusters";
 
-export const metadata: Metadata = {
-  title: "Past Winners | Kalenjin Music Awards 2026",
-  description: "Discover the past winners of the Kalenjin Music Awards — a legacy of musical excellence.",
-};
+export const metadata: Metadata = { title: "Winners" };
 
-const pastWinners = [
-  {
-    year: 2025,
-    winners: [
-      { category: "Artist of the Year",   name: "Solomon Sang",     genre: "Gospel" },
-      { category: "Best Male Artist",      name: "Kibet Birgen",     genre: "Traditional Fusion" },
-      { category: "Best Female Artist",    name: "Chebet Alai",      genre: "Gospel / Kalenjin" },
-      { category: "Song of the Year",      name: "Chebet Alai",      genre: "\"Amani\" — Chebet Alai" },
-    ],
-  },
-  {
-    year: 2024,
-    winners: [
-      { category: "Artist of the Year",   name: "Linet Chebet",     genre: "Afropop" },
-      { category: "Best Male Artist",      name: "Emmanuel Lagat",   genre: "Reggae / Afrobeat" },
-      { category: "Best Female Artist",    name: "Mercy Cherono",    genre: "Kalenjin Pop" },
-      { category: "Song of the Year",      name: "Emmanuel Lagat",   genre: "\"Rift Valley\" — Emmanuel Lagat" },
-    ],
-  },
+const winners = [
+  { year: "2025", category: "Best Overall Artiste - Secular", name: "Jua Cali Kiprotich" },
+  { year: "2025", category: "Best Overall Artiste - Gospel",  name: "Solomon Sang" },
+  { year: "2025", category: "Best Female Secular",            name: "Linet Chebet" },
+  { year: "2025", category: "Gospel Song of the Year",        name: "Faith Koech" },
+  { year: "2024", category: "Best Overall Artiste - Secular", name: "Emmanuel Lagat" },
+  { year: "2024", category: "Best Male Gospel",               name: "Kibet Birgen" },
 ];
 
 export default function WinnersPage() {
   return (
-    <div className="flex flex-col">
-      {/* Hero */}
-      <section className="py-20 px-4 md:px-6 text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary-gold/5 to-transparent pointer-events-none" />
-        <div className="container mx-auto max-w-3xl relative z-10">
-          <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">Hall of Fame</span>
-          <h1 className="font-heading text-5xl md:text-6xl font-bold mt-4 mb-4 text-white">
-            Past <span className="text-primary-gold">Winners</span>
-          </h1>
-          <p className="text-foreground/60 text-lg">
-            Celebrating the artists who have defined Kalenjin music over the years.
-          </p>
-        </div>
-      </section>
+    <div className="relative w-screen h-screen overflow-hidden bg-void-black">
+      <WayfinderIllustration />
+      <CornerClusters />
+      <div className="absolute inset-0 bg-void-black/68 z-[5]" />
 
-      {/* Winners by year */}
-      <section className="py-16 px-4 md:px-6">
-        <div className="container mx-auto max-w-4xl space-y-16">
-          {pastWinners.map(({ year, winners }) => (
-            <div key={year}>
-              <div className="flex items-center gap-4 mb-8">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-gold/10 border border-primary-gold/30">
-                  <Trophy className="h-6 w-6 text-primary-gold" />
-                </div>
-                <h2 className="font-heading text-3xl font-bold text-white">KMA {year}</h2>
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6">
+        <p className="font-ciutadella text-[13px] font-light tracking-normal text-bone-white/40 uppercase mb-4">Hall of Fame</p>
+        <h1 className="font-enreal font-light text-bone-white text-center uppercase tracking-cinematic mb-10"
+          style={{ fontSize: "clamp(28px, 5vw, 56px)" }}>
+          Past Winners
+        </h1>
+
+        <div className="w-full max-w-xl border-t border-bone-white/10 max-h-[50vh] overflow-y-auto" style={{ scrollbarWidth: "none" }}>
+          {winners.map((w, i) => (
+            <div key={i} className="flex items-center gap-6 py-4 border-b border-bone-white/10">
+              <span className="font-ciutadella font-light text-[13px] text-bone-white/30 tracking-normal w-10 shrink-0">{w.year}</span>
+              <div className="flex-1 min-w-0">
+                <p className="font-enreal font-light text-[15px] text-bone-white tracking-cinematic truncate">{w.name}</p>
+                <p className="font-ciutadella font-light text-[12px] text-bone-white/35 tracking-normal truncate mt-0.5">{w.category}</p>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {winners.map((w) => (
-                  <div key={w.category} className="flex items-center gap-4 rounded-xl border border-border bg-surface p-5 hover:border-primary-gold/30 transition-colors">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-gold/10">
-                      <span className="text-primary-gold text-lg">🏆</span>
-                    </div>
-                    <div>
-                      <p className="text-foreground/50 text-xs uppercase tracking-wider">{w.category}</p>
-                      <p className="font-heading font-semibold text-white mt-0.5">{w.name}</p>
-                      <p className="text-foreground/40 text-xs mt-0.5">{w.genre}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <span className="font-ciutadella font-light text-[13px] text-bone-white/20 tracking-normal shrink-0">✦</span>
             </div>
           ))}
         </div>
-      </section>
 
-      {/* CTA */}
-      <section className="py-16 px-4 md:px-6 text-center bg-surface/50">
-        <div className="container mx-auto max-w-xl">
-          <h2 className="font-heading text-2xl font-bold text-white mb-3">Who Will Win in 2026?</h2>
-          <p className="text-foreground/60 mb-6">Cast your vote now and help crown this year&apos;s champions.</p>
-          <Button asChild><Link href="/nominees">Vote Now</Link></Button>
+        <div className="flex items-center gap-[30px] mt-8">
+          <Link href="/nominees" className="inline-flex items-center gap-2 bg-bone-white text-void-black font-enreal font-light text-[13px] tracking-normal px-[16px] py-[8px] hover:opacity-80 transition-opacity">
+            → vote 2026
+          </Link>
+          <Link href="/" className="inline-flex items-center justify-center bg-charcoal text-bone-white font-enreal font-light text-[13px] tracking-normal px-[16px] py-[8px] border border-ash hover:opacity-80 transition-opacity">
+            back
+          </Link>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

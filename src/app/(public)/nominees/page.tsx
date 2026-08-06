@@ -1,97 +1,105 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { Button } from "@/components/ui/Button";
-import { SAMPLE_NOMINEES, AWARD_CATEGORIES } from "@/lib/constants";
-import { Mic2 } from "lucide-react";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Nominees | Kalenjin Music Awards 2026",
-  description: "Meet the 2026 Kalenjin Music Awards nominees. Browse by category and cast your vote for your favourite artists.",
-};
+import { useState } from "react";
+import Link from "next/link";
+import { WayfinderIllustration } from "@/components/shared/WayfinderIllustration";
+import { CornerClusters } from "@/components/layout/CornerClusters";
+import { AWARD_CATEGORIES, SAMPLE_NOMINEES } from "@/lib/constants";
+import { VotingModal } from "@/components/shared/VotingModal";
 
 export default function NomineesPage() {
-  return (
-    <div className="flex flex-col">
-      {/* Hero */}
-      <section className="py-20 px-4 md:px-6 text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-kalenjin-green/10 to-transparent pointer-events-none" />
-        <div className="container mx-auto max-w-3xl relative z-10">
-          <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">2026 Nominees</span>
-          <h1 className="font-heading text-5xl md:text-6xl font-bold mt-4 mb-4 text-white">
-            Meet the <span className="text-primary-gold">Nominees</span>
-          </h1>
-          <p className="text-foreground/60 text-lg">
-            Vote for your favourite artists across all categories. OTP verification ensures every vote counts.
-          </p>
-        </div>
-      </section>
+  const [activeCategory, setActiveCategory] = useState(AWARD_CATEGORIES[0].id);
+  const [selectedNominee, setSelectedNominee] = useState<typeof SAMPLE_NOMINEES[0] | null>(null);
 
-      {/* Voting Notice */}
-      <div className="px-4 md:px-6 py-4">
-        <div className="container mx-auto max-w-5xl">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 rounded-xl border border-primary-gold/30 bg-primary-gold/10 px-6 py-4">
-            <div>
-              <p className="font-heading font-semibold text-primary-gold">⏳ Voting is Open!</p>
-              <p className="text-foreground/60 text-sm mt-0.5">Voting closes August 30, 2026. One verified vote per person per category.</p>
+  const cat = AWARD_CATEGORIES.find((c) => c.id === activeCategory);
+  const nominees = SAMPLE_NOMINEES.filter((n) => n.category === activeCategory);
+
+  return (
+    <div className="relative w-screen h-screen overflow-hidden bg-void-black">
+      <WayfinderIllustration />
+      <CornerClusters />
+      <div className="absolute inset-0 bg-void-black/65 z-[5]" />
+
+      <div className="absolute inset-0 z-10 flex h-full">
+
+        {/* Left: Category list */}
+        <aside className="hidden md:flex flex-col w-[260px] shrink-0 border-r border-bone-white/10 pt-20 pb-8 overflow-y-auto" style={{ scrollbarWidth: "none" }}>
+          <p className="font-ciutadella text-[11px] font-light text-bone-white/30 uppercase tracking-normal px-6 mb-4">Categories</p>
+          {AWARD_CATEGORIES.map((c) => (
+            <button
+              key={c.id}
+              onClick={() => setActiveCategory(c.id)}
+              className={`w-full text-left px-6 py-2.5 font-enreal font-light text-[13px] tracking-cinematic transition-colors ${
+                c.id === activeCategory
+                  ? "text-bone-white border-l-2 border-bone-white bg-bone-white/5"
+                  : "text-bone-white/40 hover:text-bone-white/70 border-l-2 border-transparent"
+              }`}
+            >
+              {c.name}
+            </button>
+          ))}
+        </aside>
+
+        {/* Right: Nominee display */}
+        <div className="flex-1 flex flex-col items-center justify-center px-8">
+          {/* Category title */}
+          <p className="font-ciutadella text-[13px] font-light tracking-normal text-bone-white/40 uppercase mb-3">
+            Nominees
+          </p>
+          <h1
+            className="font-enreal font-light text-bone-white text-center uppercase tracking-cinematic mb-10"
+            style={{ fontSize: "clamp(22px, 3vw, 40px)" }}
+          >
+            {cat?.name}
+          </h1>
+
+          {nominees.length > 0 ? (
+            <div className="flex flex-col w-full max-w-md gap-px border-t border-bone-white/10">
+              {nominees.map((nominee) => (
+                <button
+                  key={nominee.id}
+                  onClick={() => setSelectedNominee(nominee)}
+                  className="flex items-center justify-between py-4 border-b border-bone-white/10 hover:bg-bone-white/5 transition-colors group text-left"
+                >
+                  <div>
+                    <p className="font-enreal font-light text-[16px] text-bone-white tracking-cinematic group-hover:opacity-80">
+                      {nominee.name}
+                    </p>
+                    <p className="font-ciutadella font-light text-[13px] text-bone-white/40 mt-0.5 tracking-normal">
+                      {nominee.genre}
+                    </p>
+                  </div>
+                  <span className="font-ciutadella font-light text-[11px] text-bone-white/30 tracking-normal mr-2">
+                    {nominee.votes.toLocaleString()} votes
+                  </span>
+                </button>
+              ))}
             </div>
-            <Button size="sm">Register to Vote</Button>
+          ) : (
+            <div className="text-center">
+              <p className="font-enreal font-light text-bone-white/30 text-[14px] tracking-cinematic uppercase mb-6">
+                Nominations open soon
+              </p>
+              <p className="font-ciutadella font-light text-[13px] text-bone-white/20 tracking-normal">
+                Nominees for this category will be listed here
+              </p>
+            </div>
+          )}
+
+          <div className="mt-10">
+            <Link href="/" className="inline-flex items-center justify-center bg-charcoal text-bone-white font-enreal font-light text-[13px] tracking-normal px-[16px] py-[8px] border border-ash hover:opacity-80 transition-opacity">
+              back
+            </Link>
           </div>
         </div>
       </div>
 
-      {/* Categories & Nominees */}
-      <section className="py-16 px-4 md:px-6">
-        <div className="container mx-auto max-w-5xl space-y-16">
-          {AWARD_CATEGORIES.slice(0, 6).map((cat) => {
-            const catNominees = SAMPLE_NOMINEES.filter((n) => n.category === cat.id);
-            if (catNominees.length === 0) return null;
-            return (
-              <div key={cat.id}>
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="font-heading text-2xl font-bold text-white">{cat.name}</h2>
-                  <Link href={`/categories/${cat.id}`} className="text-primary-gold text-sm hover:underline">
-                    View all →
-                  </Link>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {catNominees.map((nominee) => (
-                    <div
-                      key={nominee.id}
-                      className="group rounded-xl border border-border bg-surface overflow-hidden hover:border-primary-gold/40 transition-all duration-300"
-                    >
-                      <div className="relative h-44 bg-gradient-to-br from-kalenjin-maroon/20 via-background to-kalenjin-green/20 flex items-center justify-center">
-                        <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-primary-gold/20 bg-primary-gold/10">
-                          <Mic2 className="h-8 w-8 text-primary-gold/50" />
-                        </div>
-                      </div>
-                      <div className="p-4">
-                        <h3 className="font-heading font-semibold text-white text-sm group-hover:text-primary-gold transition-colors">{nominee.name}</h3>
-                        <p className="text-foreground/40 text-xs mt-0.5">{nominee.genre}</p>
-                        <div className="mt-3 space-y-2">
-                          <div className="flex items-center justify-between text-xs text-foreground/40">
-                            <span>{nominee.votes.toLocaleString()} votes</span>
-                          </div>
-                          <Button size="sm" className="w-full text-xs h-8">
-                            🗳️ Vote
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* All categories CTA */}
-      <section className="py-12 px-4 md:px-6 text-center border-t border-border">
-        <div className="container mx-auto max-w-xl">
-          <p className="text-foreground/60 mb-4">Want to see nominees across all 20+ categories?</p>
-          <Button variant="outline" asChild><Link href="/categories">Browse All Categories</Link></Button>
-        </div>
-      </section>
+      {selectedNominee && (
+        <VotingModal
+          nominee={selectedNominee}
+          onClose={() => setSelectedNominee(null)}
+        />
+      )}
     </div>
   );
 }

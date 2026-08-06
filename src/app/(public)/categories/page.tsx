@@ -1,74 +1,60 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
+import { WayfinderIllustration } from "@/components/shared/WayfinderIllustration";
+import { CornerClusters } from "@/components/layout/CornerClusters";
 import { AWARD_CATEGORIES } from "@/lib/constants";
-import { Trophy, Mic2, Music2, Star, Music } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Award Categories | Kalenjin Music Awards 2026",
-  description: "Browse all 20+ award categories at the Kalenjin Music Awards 2026. From Best Artist to Best Traditional, find your favourite category and vote.",
-};
-
-const icons = [Trophy, Mic2, Music2, Star, Music];
+export const metadata: Metadata = { title: "Categories" };
 
 export default function CategoriesPage() {
   return (
-    <div className="flex flex-col">
-      {/* Hero */}
-      <section className="py-20 px-4 md:px-6 text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-kalenjin-maroon/10 to-transparent pointer-events-none" />
-        <div className="container mx-auto max-w-3xl relative z-10">
-          <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">KMA 2026</span>
-          <h1 className="font-heading text-5xl md:text-6xl font-bold mt-4 mb-4 text-white">
-            Award <span className="text-primary-gold">Categories</span>
-          </h1>
-          <p className="text-foreground/60 text-lg max-w-xl mx-auto">
-            Twenty prestigious categories recognizing the full breadth of Kalenjin musical excellence.
-          </p>
-        </div>
-      </section>
+    <div className="relative w-screen h-screen overflow-hidden bg-void-black">
+      <WayfinderIllustration />
+      <CornerClusters />
 
-      {/* Categories Grid */}
-      <section className="py-16 px-4 md:px-6">
-        <div className="container mx-auto max-w-5xl">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {AWARD_CATEGORIES.map((cat, i) => {
-              const Icon = icons[i % icons.length];
-              return (
-                <Link
-                  key={cat.id}
-                  href={`/nominees?category=${cat.id}`}
-                  className="group relative flex flex-col gap-3 rounded-xl border border-border bg-surface p-6 hover:border-primary-gold/50 hover:bg-surface-hover transition-all duration-300"
-                >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-gold/10 group-hover:bg-primary-gold/20 transition-colors">
-                    <Icon className="h-6 w-6 text-primary-gold" />
-                  </div>
-                  <div>
-                    <h2 className="font-heading font-semibold text-white group-hover:text-primary-gold transition-colors leading-snug">
-                      {cat.name}
-                    </h2>
-                    <p className="text-foreground/40 text-sm mt-1">{cat.nominees} Nominees</p>
-                  </div>
-                  <div className="mt-auto pt-3 border-t border-border">
-                    <span className="text-primary-gold text-sm font-medium group-hover:underline">
-                      View &amp; Vote →
-                    </span>
-                  </div>
-                </Link>
-              );
-            })}
+      {/* Dark overlay for readability over category list */}
+      <div className="absolute inset-0 bg-void-black/60 z-[5]" />
+
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 py-12">
+        {/* Title */}
+        <p className="font-ciutadella text-[13px] font-light tracking-normal text-bone-white/40 uppercase mb-4">
+          3rd Edition — 2026
+        </p>
+        <h1 className="font-enreal font-light text-bone-white text-center uppercase tracking-cinematic mb-8"
+          style={{ fontSize: "clamp(28px, 4vw, 52px)" }}>
+          Award Categories
+        </h1>
+
+        {/* Scrollable category list */}
+        <div className="w-full max-w-2xl max-h-[55vh] overflow-y-auto" style={{ scrollbarWidth: "none" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px border-t border-bone-white/10">
+            {AWARD_CATEGORIES.map((cat, i) => (
+              <Link
+                key={cat.id}
+                href={`/nominees?category=${cat.id}`}
+                className="flex items-baseline gap-4 px-0 py-3 border-b border-bone-white/10 hover:bg-bone-white/5 transition-colors group"
+              >
+                <span className="font-ciutadella text-[13px] font-light text-bone-white/30 tracking-normal w-6 shrink-0">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="font-enreal font-light text-[14px] text-bone-white/80 tracking-cinematic group-hover:text-bone-white transition-colors">
+                  {cat.name}
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
-      </section>
 
-      {/* CTA */}
-      <section className="py-16 px-4 md:px-6 bg-surface/50">
-        <div className="container mx-auto max-w-2xl text-center">
-          <h2 className="font-heading text-2xl md:text-3xl font-bold text-white mb-3">Want to Nominate an Artist?</h2>
-          <p className="text-foreground/60 mb-6">Nominations for KMA 2027 will open in January. Stay tuned!</p>
-          <Button variant="outline" asChild><Link href="/contact">Get in Touch</Link></Button>
+        {/* Actions */}
+        <div className="flex items-center gap-[30px] mt-8">
+          <Link href="/nominees" className="inline-flex items-center gap-2 bg-bone-white text-void-black font-enreal font-light text-[13px] tracking-normal px-[16px] py-[8px] hover:opacity-80 transition-opacity">
+            → vote now
+          </Link>
+          <Link href="/" className="inline-flex items-center justify-center bg-charcoal text-bone-white font-enreal font-light text-[13px] tracking-normal px-[16px] py-[8px] border border-ash hover:opacity-80 transition-opacity">
+            back
+          </Link>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

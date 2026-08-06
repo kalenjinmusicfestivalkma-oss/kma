@@ -4,31 +4,17 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 93%;
-    --primary-gold: 43 68% 52%;
-    --primary-gold-hover: 43 60% 44%;
-    --kalenjin-maroon: 0 100% 25%;
-    --kalenjin-green: 146 50% 36%;
-    --surface: 0 0% 9%;
-    --surface-hover: 0 0% 15%;
-    --border: 0 0% 20%;
+    --color-void-black: #000000;
+    --color-smolder-earth: #0b0502;
+    --color-charcoal: #1a1a1a;
+    --color-bone-white: #ffffff;
+    --color-ash: #e3e3e2;
+    --color-driftwood: #c0bfbe;
   }
   
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-void-black text-bone-white;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-}
-
-@layer utilities {
-  .bg-pattern {
-    background-image: radial-gradient(hsl(var(--border)) 1px, transparent 1px);
-    background-size: 28px 28px;
-  }
-  
-  .font-heading {
-    font-family: var(--font-outfit), sans-serif;
   }
 }
