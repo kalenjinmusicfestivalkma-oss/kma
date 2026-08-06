@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Trophy, Mic2, Music2, Star } from "lucide-react";
+import { InstrumentBackground } from "@/components/shared/InstrumentBackground";
 
 // ─── Sample Data ─────────────────────────────────────────────────────────────
 
@@ -32,15 +33,7 @@ const sponsors = [
 function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Ambient glow blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 rounded-full bg-kalenjin-maroon/20 blur-[120px]" />
-        <div className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 rounded-full bg-kalenjin-green/15 blur-[120px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 rounded-full bg-primary-gold/10 blur-[100px]" />
-      </div>
-
-      {/* Dot grid overlay */}
-      <div className="absolute inset-0 bg-pattern opacity-20 pointer-events-none" />
+      <InstrumentBackground />
 
       <div className="container mx-auto px-4 md:px-6 text-center relative z-10 max-w-5xl">
         {/* Badge */}
