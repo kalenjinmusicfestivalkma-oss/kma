@@ -1,0 +1,2 @@
+-- Sample Kalenjin Music Awards Seed Data
+-- To be filled in Phase 7

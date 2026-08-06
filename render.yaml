@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: kma-app
+    env: node
+    # Next.js requires dependencies to be installed and then built
+    buildCommand: npm install && npm run build
+    # Next.js starts the production server with this command
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: ~20
+      # Database & Auth
+      - key: NEXT_PUBLIC_SUPABASE_URL
+        sync: false
+      - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
+        sync: false
+      # Payments (Safaricom M-Pesa)
+      - key: MPESA_CONSUMER_KEY
+        sync: false
+      - key: MPESA_CONSUMER_SECRET
+        sync: false
+      - key: MPESA_SHORTCODE
+        sync: false
+      - key: MPESA_PASSKEY
+        sync: false
+      - key: MPESA_CALLBACK_URL
+        sync: false
