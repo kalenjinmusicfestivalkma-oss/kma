@@ -31,17 +31,17 @@ export function InstrumentBackground() {
   });
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Brighter Glow blobs to make the background less dark */}
-      <div className="absolute -top-1/4 -left-1/4 w-3/4 h-3/4 rounded-full bg-kalenjin-maroon/30 blur-[140px]" />
-      <div className="absolute -bottom-1/4 -right-1/4 w-3/4 h-3/4 rounded-full bg-kalenjin-green/25 blur-[140px]" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 rounded-full bg-primary-gold/20 blur-[120px]" />
+    <div className="absolute inset-0 overflow-hidden pointer-events-none bg-gradient-to-br from-kalenjin-maroon/20 via-surface to-primary-gold/10">
+      {/* Massive vibrant blobs to eliminate any pitch-black dark spots */}
+      <div className="absolute -top-1/4 -left-1/4 w-[150%] h-[150%] rounded-full bg-kalenjin-maroon/20 blur-[150px]" />
+      <div className="absolute top-1/4 -right-1/4 w-[120%] h-[120%] rounded-full bg-kalenjin-green/20 blur-[150px]" />
+      <div className="absolute -bottom-1/4 left-1/4 w-[120%] h-[120%] rounded-full bg-primary-gold/15 blur-[150px]" />
       
       {/* Scattered musical instruments and arts */}
       {elements}
       
-      {/* Very subtle bottom gradient just for text readability, mostly clear */}
-      <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-background to-transparent" />
+      {/* Very subtle bottom gradient just for text readability at the very edge */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
     </div>
   );
 }
