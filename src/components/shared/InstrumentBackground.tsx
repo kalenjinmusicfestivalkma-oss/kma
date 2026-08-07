@@ -50,7 +50,11 @@ const MixerIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-const icons = [GuitarIcon, PianoIcon, DrumIcon, MixerIcon, Music, Mic2, Headphones, Radio, PlayCircle, Star, Sparkles, Music2, Speaker];
+const icons = [
+  GuitarIcon, PianoIcon, DrumIcon, MixerIcon, 
+  GuitarIcon, PianoIcon, DrumIcon, MixerIcon, // Double weight for instruments
+  Music, Mic2, Headphones, Sparkles
+];
 
 export function InstrumentBackground() {
   // Generate a random-looking but deterministic distribution of icons
@@ -61,8 +65,10 @@ export function InstrumentBackground() {
     const top = `${(i * 17) % 100}%`;
     const left = `${(i * 23) % 100}%`;
     const rotation = (i * 45) % 360;
-    const size = (i % 3 === 0) ? 64 : (i % 2 === 0) ? 48 : 36;
-    const opacity = (i % 2 === 0) ? 0.15 : 0.25;
+    
+    // Increased size and opacity so they are much more noticeable!
+    const size = (i % 3 === 0) ? 120 : (i % 2 === 0) ? 80 : 56;
+    const opacity = (i % 2 === 0) ? 0.3 : 0.5;
     
     return (
       <Icon
