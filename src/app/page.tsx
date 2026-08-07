@@ -81,6 +81,39 @@ function HeroSection() {
           ))}
         </div>
       </div>
+
+      {/* Hero Navigation Strip */}
+      <div 
+        className="absolute bottom-0 left-0 w-full py-5 overflow-x-auto border-t border-white/5"
+        style={{
+          backgroundColor: '#0a1128',
+          backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.02) 10px, rgba(255,255,255,0.02) 20px)'
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-center gap-6 md:gap-10 min-w-max">
+            {[
+              { href: "/about", label: "About" },
+              { href: "/categories", label: "Categories" },
+              { href: "/nominees", label: "Nominees" },
+              { href: "/nominees", label: "Vote" },
+              { href: "/winners", label: "Past Winners" },
+              { href: "/news", label: "News" },
+              { href: "/tickets", label: "Tickets" },
+              { href: "/sponsors", label: "Sponsors" },
+              { href: "/contact", label: "Contact" },
+            ].map((link, idx) => (
+              <Link
+                key={idx}
+                href={link.href}
+                className="text-[#9CA3AF] hover:text-white text-sm md:text-base font-medium transition-colors tracking-wide"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
