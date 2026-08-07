@@ -19,7 +19,7 @@ export default function CategoriesPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-kalenjin-maroon/10 to-transparent pointer-events-none" />
         <div className="container mx-auto max-w-3xl relative z-10">
           <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">KMA 2026</span>
-          <h1 className="font-heading text-5xl md:text-6xl font-bold mt-4 mb-4 text-white">
+          <h1 className="font-heading text-5xl md:text-6xl font-bold mt-4 mb-4 text-foreground">
             Award <span className="text-primary-gold">Categories</span>
           </h1>
           <p className="text-foreground/60 text-lg max-w-xl mx-auto">
@@ -44,7 +44,7 @@ export default function CategoriesPage() {
                     <Icon className="h-6 w-6 text-primary-gold" />
                   </div>
                   <div>
-                    <h2 className="font-heading font-semibold text-white group-hover:text-primary-gold transition-colors leading-snug">
+                    <h2 className="font-heading font-semibold text-foreground group-hover:text-primary-gold transition-colors leading-snug">
                       {cat.name}
                     </h2>
                     <p className="text-foreground/40 text-sm mt-1">{cat.nominees} Nominees</p>
@@ -64,7 +64,7 @@ export default function CategoriesPage() {
       {/* CTA */}
       <section className="py-16 px-4 md:px-6 bg-surface/50">
         <div className="container mx-auto max-w-2xl text-center">
-          <h2 className="font-heading text-2xl md:text-3xl font-bold text-white mb-3">Want to Nominate an Artist?</h2>
+          <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-3">Want to Nominate an Artist?</h2>
           <p className="text-foreground/60 mb-6">Nominations for KMA 2027 will open in January. Stay tuned!</p>
           <Button variant="outline" asChild><Link href="/contact">Get in Touch</Link></Button>
         </div>

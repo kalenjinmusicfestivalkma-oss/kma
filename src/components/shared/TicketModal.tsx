@@ -62,10 +62,10 @@ export function TicketModal({ tierName, tierPrice, onClose }: TicketModalProps) 
       <div className="relative w-full max-w-md rounded-2xl border border-border bg-surface shadow-2xl shadow-black/50 overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-border">
-          <h2 className="font-heading text-lg font-bold text-white">Buy {tierName} Ticket</h2>
+          <h2 className="font-heading text-lg font-bold text-foreground">Buy {tierName} Ticket</h2>
           <button
             onClick={onClose}
-            className="flex h-8 w-8 items-center justify-center rounded-md text-foreground/50 hover:text-white hover:bg-surface-hover transition-all"
+            className="flex h-8 w-8 items-center justify-center rounded-md text-foreground/50 hover:text-foreground hover:bg-surface-hover transition-all"
           >
             <X className="h-4 w-4" />
           </button>
@@ -116,7 +116,7 @@ export function TicketModal({ tierName, tierPrice, onClose }: TicketModalProps) 
 
               <div className="pt-4 mt-2 border-t border-border flex justify-between items-center">
                 <span className="text-sm text-foreground/70">Total Amount:</span>
-                <span className="text-xl font-bold text-white">KES {totalAmount.toLocaleString()}</span>
+                <span className="text-xl font-bold text-foreground">KES {totalAmount.toLocaleString()}</span>
               </div>
 
               {error && <p className="text-red-400 text-xs bg-red-400/10 border border-red-400/20 rounded-md px-2 py-1.5">{error}</p>}
@@ -128,7 +128,7 @@ export function TicketModal({ tierName, tierPrice, onClose }: TicketModalProps) 
           {step === "processing" && (
             <div className="text-center py-8 space-y-4">
               <div className="w-12 h-12 border-4 border-border border-t-primary-gold rounded-full animate-spin mx-auto"></div>
-              <p className="text-white font-medium">Initiating M-Pesa STK Push...</p>
+              <p className="text-foreground font-medium">Initiating M-Pesa STK Push...</p>
               <p className="text-xs text-foreground/50">Please do not close this window.</p>
             </div>
           )}
@@ -136,7 +136,7 @@ export function TicketModal({ tierName, tierPrice, onClose }: TicketModalProps) 
           {step === "success" && (
             <div className="text-center py-6 space-y-4">
               <div className="text-5xl mb-2">📱</div>
-              <p className="font-heading text-white font-bold text-lg">Check your phone!</p>
+              <p className="font-heading text-foreground font-bold text-lg">Check your phone!</p>
               <p className="text-foreground/60 text-sm leading-relaxed">
                 We've sent an M-Pesa payment prompt to your phone. Enter your PIN to complete the purchase of KES {totalAmount.toLocaleString()}.
               </p>

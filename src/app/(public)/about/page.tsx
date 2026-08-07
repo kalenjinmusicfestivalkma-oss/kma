@@ -34,7 +34,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-kalenjin-maroon/10 via-background to-kalenjin-green/10 pointer-events-none" />
         <div className="container mx-auto max-w-4xl text-center relative z-10">
           <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">Our Story</span>
-          <h1 className="font-heading text-5xl md:text-6xl font-bold mt-4 mb-6 text-white">
+          <h1 className="font-heading text-5xl md:text-6xl font-bold mt-4 mb-6 text-foreground">
             About <span className="text-primary-gold">KMA</span>
           </h1>
           <p className="text-foreground/70 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
@@ -50,7 +50,7 @@ export default function AboutPage() {
         <div className="container mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
             <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">Our Mission</span>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3 mb-5 text-white">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3 mb-5 text-foreground">
               Amplifying the Voice of Kalenjin Music
             </h2>
             <p className="text-foreground/60 leading-relaxed mb-4">
@@ -85,7 +85,7 @@ export default function AboutPage() {
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
             <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">What We Stand For</span>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3 text-white">Our Core Values</h2>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3 text-foreground">Our Core Values</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {values.map(({ icon: Icon, title, desc }) => (
@@ -93,7 +93,7 @@ export default function AboutPage() {
                 <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary-gold/10 mb-4">
                   <Icon className="h-5 w-5 text-primary-gold" />
                 </div>
-                <h3 className="font-heading font-semibold text-white mb-2">{title}</h3>
+                <h3 className="font-heading font-semibold text-foreground mb-2">{title}</h3>
                 <p className="text-foreground/50 text-sm leading-relaxed">{desc}</p>
               </div>
             ))}
@@ -106,7 +106,7 @@ export default function AboutPage() {
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
             <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">The People Behind KMA</span>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3 text-white">Meet the Team</h2>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3 text-foreground">Meet the Team</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {team.map((member) => (
@@ -115,7 +115,7 @@ export default function AboutPage() {
                   <span className="font-heading font-bold text-sm text-primary-gold">{member.initials}</span>
                 </div>
                 <div>
-                  <p className="font-heading font-semibold text-white text-sm">{member.name}</p>
+                  <p className="font-heading font-semibold text-foreground text-sm">{member.name}</p>
                   <p className="text-foreground/50 text-xs mt-0.5">{member.role}</p>
                 </div>
               </div>
@@ -127,7 +127,7 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="py-20 px-4 md:px-6">
         <div className="container mx-auto max-w-2xl text-center">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">Ready to Celebrate?</h2>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">Ready to Celebrate?</h2>
           <p className="text-foreground/60 mb-8">Cast your vote, get your tickets, and be part of the biggest night in Kalenjin music.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild><Link href="/nominees">Vote Now</Link></Button>

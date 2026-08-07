@@ -6,18 +6,18 @@ export default function AdminSettingsPage() {
   return (
     <div className="space-y-6 max-w-3xl">
       <div>
-        <h1 className="font-heading text-2xl font-bold text-white">System Settings</h1>
+        <h1 className="font-heading text-2xl font-bold text-foreground">System Settings</h1>
         <p className="text-foreground/50 text-sm mt-1">Configure global application parameters</p>
       </div>
 
       <div className="space-y-6">
         {/* Voting Status */}
         <section className="rounded-xl border border-border bg-surface p-6">
-          <h2 className="font-heading font-semibold text-white mb-4">Voting Configuration</h2>
+          <h2 className="font-heading font-semibold text-foreground mb-4">Voting Configuration</h2>
           <div className="space-y-4">
             <div className="flex items-center justify-between p-4 rounded-lg border border-border bg-background/50">
               <div>
-                <p className="font-medium text-white">Voting Status</p>
+                <p className="font-medium text-foreground">Voting Status</p>
                 <p className="text-foreground/50 text-xs mt-0.5">Allow public users to cast votes</p>
               </div>
               <div className="flex items-center gap-2">
@@ -43,7 +43,7 @@ export default function AdminSettingsPage() {
 
         {/* Payment Settings */}
         <section className="rounded-xl border border-border bg-surface p-6">
-          <h2 className="font-heading font-semibold text-white mb-4">M-Pesa Integration</h2>
+          <h2 className="font-heading font-semibold text-foreground mb-4">M-Pesa Integration</h2>
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-foreground/70 mb-1.5">Paybill / Till Number</label>
@@ -57,7 +57,7 @@ export default function AdminSettingsPage() {
         </section>
 
         <div className="flex justify-end gap-3">
-          <button className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground/70 hover:bg-surface-hover hover:text-white transition-colors">Cancel</button>
+          <button className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground/70 hover:bg-surface-hover hover:text-foreground transition-colors">Cancel</button>
           <button className="rounded-lg bg-primary-gold px-4 py-2 text-sm font-semibold text-black hover:bg-primary-gold/90 transition-colors">Save Settings</button>
         </div>
       </div>

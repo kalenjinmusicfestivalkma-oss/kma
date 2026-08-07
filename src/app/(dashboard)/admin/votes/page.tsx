@@ -15,10 +15,10 @@ export default function AdminVotesPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-heading text-2xl font-bold text-white">Votes</h1>
+          <h1 className="font-heading text-2xl font-bold text-foreground">Votes</h1>
           <p className="text-foreground/50 text-sm mt-1">52,341 total votes • 3 flagged for review</p>
         </div>
-        <button className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface text-foreground/70 hover:text-white text-sm px-4 py-2 transition-all">
+        <button className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface text-foreground/70 hover:text-foreground text-sm px-4 py-2 transition-all">
           ⬇️ Export CSV
         </button>
       </div>
@@ -33,7 +33,7 @@ export default function AdminVotesPage() {
         ].map((c) => (
           <div key={c.label} className="rounded-xl border border-border bg-surface p-4 text-center">
             <div className="text-2xl mb-1">{c.icon}</div>
-            <p className="font-heading text-xl font-bold text-white">{c.value}</p>
+            <p className="font-heading text-xl font-bold text-foreground">{c.value}</p>
             <p className="text-foreground/50 text-xs mt-0.5">{c.label}</p>
           </div>
         ))}
@@ -57,12 +57,12 @@ export default function AdminVotesPage() {
               <tr key={v.id} className={`hover:bg-background/20 transition-colors ${v.status === "flagged" ? "bg-red-500/5" : ""}`}>
                 <td className="px-5 py-3.5 text-foreground/40 font-mono text-xs">{v.id}</td>
                 <td className="px-5 py-3.5">
-                  <p className="font-medium text-white text-xs">{v.user}</p>
+                  <p className="font-medium text-foreground text-xs">{v.user}</p>
                   <p className="text-foreground/40 text-xs">{v.phone}</p>
                 </td>
                 <td className="px-5 py-3.5">
                   <p className="text-foreground/60 text-xs">{v.category}</p>
-                  <p className="font-medium text-white text-xs">{v.nominee}</p>
+                  <p className="font-medium text-foreground text-xs">{v.nominee}</p>
                 </td>
                 <td className="px-5 py-3.5 text-foreground/50 text-xs">{v.time}</td>
                 <td className="px-5 py-3.5">

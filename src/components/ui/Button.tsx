@@ -11,7 +11,7 @@ const buttonVariants = cva(
         default:
           "bg-primary-gold text-black font-semibold hover:bg-primary-gold/90 shadow-sm",
         destructive:
-          "bg-kalenjin-maroon text-white hover:bg-kalenjin-maroon/90 shadow-sm",
+          "bg-kalenjin-maroon text-foreground hover:bg-kalenjin-maroon/90 shadow-sm",
         outline:
           "border border-border bg-transparent hover:bg-surface hover:text-primary-gold text-foreground",
         secondary:

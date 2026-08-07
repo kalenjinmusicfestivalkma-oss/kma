@@ -91,7 +91,7 @@ function CategoriesSection() {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-14">
           <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">This Year&apos;s Awards</span>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold mt-3 text-white">Award Categories</h2>
+          <h2 className="font-heading text-4xl md:text-5xl font-bold mt-3 text-foreground">Award Categories</h2>
           <p className="text-foreground/60 mt-4 max-w-xl mx-auto">
             Twenty prestigious categories recognizing excellence across every dimension of Kalenjin music.
           </p>
@@ -110,7 +110,7 @@ function CategoriesSection() {
                   <Icon className="h-6 w-6 text-primary-gold" />
                 </div>
                 <div>
-                  <h3 className="font-heading font-semibold text-white group-hover:text-primary-gold transition-colors">{cat.title}</h3>
+                  <h3 className="font-heading font-semibold text-foreground group-hover:text-primary-gold transition-colors">{cat.title}</h3>
                   <p className="text-foreground/50 text-sm mt-0.5">{cat.count} Nominees</p>
                 </div>
                 <span className="absolute right-4 top-1/2 -translate-y-1/2 text-foreground/20 group-hover:text-primary-gold/50 transition-colors text-xl">›</span>
@@ -135,7 +135,7 @@ function NomineesSection() {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-14">
           <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">2026 Nominees</span>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold mt-3 text-white">Featured Nominees</h2>
+          <h2 className="font-heading text-4xl md:text-5xl font-bold mt-3 text-foreground">Featured Nominees</h2>
           <p className="text-foreground/60 mt-4 max-w-xl mx-auto">
             Meet the talented artists competing for this year&apos;s most coveted awards.
           </p>
@@ -155,7 +155,7 @@ function NomineesSection() {
               </div>
 
               <div className="p-4">
-                <h3 className="font-heading font-semibold text-white group-hover:text-primary-gold transition-colors">{nominee.name}</h3>
+                <h3 className="font-heading font-semibold text-foreground group-hover:text-primary-gold transition-colors">{nominee.name}</h3>
                 <p className="text-foreground/50 text-sm mt-1">{nominee.genre}</p>
                 <div className="mt-3 flex items-center justify-between">
                   <span className="text-xs text-foreground/40">{nominee.votes.toLocaleString()} votes</span>
@@ -189,7 +189,7 @@ function VotingCTA() {
           <span className="inline-block rounded-full bg-primary-gold/10 border border-primary-gold/30 px-4 py-1.5 text-primary-gold text-sm font-medium mb-6">
             ⏳ Voting Closes August 30, 2026
           </span>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
             Your Vote <span className="text-primary-gold">Matters</span>
           </h2>
           <p className="text-foreground/60 mb-8 text-lg max-w-lg mx-auto">
@@ -230,7 +230,7 @@ function SponsorsSection() {
               key={`${sponsor.name}-${idx}`}
               className="group flex flex-col items-center justify-center gap-2 rounded-lg border border-border bg-surface px-8 py-5 hover:border-primary-gold/30 transition-all duration-200 w-[180px] shrink-0"
             >
-              <span className="font-heading font-bold text-lg text-white/80 group-hover:text-white transition-colors text-center">
+              <span className="font-heading font-bold text-lg text-foreground/80 group-hover:text-foreground transition-colors text-center">
                 {sponsor.name}
               </span>
               <span className={`text-xs font-medium ${

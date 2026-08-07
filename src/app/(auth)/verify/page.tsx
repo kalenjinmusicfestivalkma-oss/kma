@@ -69,10 +69,10 @@ export default function VerifyPage() {
           <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-primary-gold/10 border border-primary-gold/30 mb-4 text-3xl">
             📱
           </div>
-          <h1 className="font-heading text-3xl font-bold text-white">Verify Your Number</h1>
+          <h1 className="font-heading text-3xl font-bold text-foreground">Verify Your Number</h1>
           <p className="text-foreground/60 mt-2 text-sm">
             We sent a 6-digit code to{" "}
-            <span className="text-white font-medium">+254 7XX XXX XXX</span>
+            <span className="text-foreground font-medium">+254 7XX XXX XXX</span>
           </p>
         </div>
 
@@ -90,7 +90,7 @@ export default function VerifyPage() {
                 value={digit}
                 onChange={(e) => handleChange(i, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(i, e)}
-                className={`h-12 w-11 rounded-lg border text-center text-lg font-bold text-white bg-background transition-all focus:outline-none focus:ring-2 focus:ring-primary-gold/50 ${
+                className={`h-12 w-11 rounded-lg border text-center text-lg font-bold text-foreground bg-background transition-all focus:outline-none focus:ring-2 focus:ring-primary-gold/50 ${
                   digit ? "border-primary-gold/60" : "border-border"
                 }`}
               />

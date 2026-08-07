@@ -75,13 +75,13 @@ export function VotingModal({ nominee, categoryName, onClose }: VotingModalProps
       <div className="relative w-full max-w-md rounded-2xl border border-border bg-surface shadow-2xl shadow-black/50 overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-border">
-          <h2 className="font-heading text-lg font-bold text-white">
+          <h2 className="font-heading text-lg font-bold text-foreground">
             {step === "success" ? "🎉 Vote Cast!" : step === "error" ? "Vote Failed" : "Cast Your Vote"}
           </h2>
           <button
             id="voting-modal-close"
             onClick={onClose}
-            className="flex h-8 w-8 items-center justify-center rounded-md text-foreground/50 hover:text-white hover:bg-surface-hover transition-all"
+            className="flex h-8 w-8 items-center justify-center rounded-md text-foreground/50 hover:text-foreground hover:bg-surface-hover transition-all"
           >
             <X className="h-4 w-4" />
           </button>
@@ -97,7 +97,7 @@ export function VotingModal({ nominee, categoryName, onClose }: VotingModalProps
                 </span>
               </div>
               <div>
-                <p className="font-heading font-semibold text-white text-sm">{nominee.name}</p>
+                <p className="font-heading font-semibold text-foreground text-sm">{nominee.name}</p>
                 <p className="text-foreground/50 text-xs mt-0.5">{categoryName}</p>
               </div>
             </div>
@@ -137,7 +137,7 @@ export function VotingModal({ nominee, categoryName, onClose }: VotingModalProps
                 value={otp}
                 onChange={(e) => setOtp(e.target.value.replace(/\D/g, "").slice(0, 6))}
                 placeholder="Enter 6-digit code"
-                className="w-full rounded-lg border border-border bg-background px-4 py-3 text-center text-xl font-bold text-white tracking-widest placeholder:text-foreground/20 placeholder:text-base placeholder:tracking-normal focus:outline-none focus:ring-2 focus:ring-primary-gold/50 transition"
+                className="w-full rounded-lg border border-border bg-background px-4 py-3 text-center text-xl font-bold text-foreground tracking-widest placeholder:text-foreground/20 placeholder:text-base placeholder:tracking-normal focus:outline-none focus:ring-2 focus:ring-primary-gold/50 transition"
               />
               {error && <p className="text-red-400 text-sm bg-red-400/10 border border-red-400/20 rounded-lg px-3 py-2">{error}</p>}
               <Button
@@ -158,7 +158,7 @@ export function VotingModal({ nominee, categoryName, onClose }: VotingModalProps
           {step === "success" && (
             <div className="text-center py-4 space-y-4">
               <div className="text-5xl mb-2">🏆</div>
-              <p className="font-heading text-white font-semibold">You voted for <span className="text-primary-gold">{nominee.name}</span>!</p>
+              <p className="font-heading text-foreground font-semibold">You voted for <span className="text-primary-gold">{nominee.name}</span>!</p>
               <p className="text-foreground/50 text-sm">Your vote has been verified and recorded. Thank you for participating!</p>
               <div className="rounded-lg border border-kalenjin-green/30 bg-kalenjin-green/10 px-4 py-3 text-sm text-kalenjin-green/80">
                 ✓ Vote confirmed • Anti-fraud check passed

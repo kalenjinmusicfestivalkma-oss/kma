@@ -16,7 +16,7 @@ export default function ContactPage() {
       <section className="py-20 px-4 md:px-6 text-center">
         <div className="container mx-auto max-w-2xl">
           <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">Get In Touch</span>
-          <h1 className="font-heading text-5xl md:text-6xl font-bold mt-4 mb-4 text-white">
+          <h1 className="font-heading text-5xl md:text-6xl font-bold mt-4 mb-4 text-foreground">
             Contact <span className="text-primary-gold">Us</span>
           </h1>
           <p className="text-foreground/60 text-lg">
@@ -29,7 +29,7 @@ export default function ContactPage() {
         <div className="container mx-auto max-w-5xl grid grid-cols-1 lg:grid-cols-5 gap-12">
           {/* Contact Form */}
           <div className="lg:col-span-3 rounded-2xl border border-border bg-surface p-8">
-            <h2 className="font-heading text-2xl font-bold text-white mb-6">Send us a Message</h2>
+            <h2 className="font-heading text-2xl font-bold text-foreground mb-6">Send us a Message</h2>
             <form className="space-y-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
@@ -90,7 +90,7 @@ export default function ContactPage() {
           {/* Contact Info */}
           <div className="lg:col-span-2 space-y-6">
             <div className="rounded-xl border border-border bg-surface p-6">
-              <h3 className="font-heading font-semibold text-white mb-4">Contact Information</h3>
+              <h3 className="font-heading font-semibold text-foreground mb-4">Contact Information</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary-gold/10">
@@ -98,7 +98,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-foreground/50 text-xs uppercase tracking-wider">Email</p>
-                    <a href={`mailto:${CONTACT_EMAIL}`} className="text-sm text-white hover:text-primary-gold transition-colors">{CONTACT_EMAIL}</a>
+                    <a href={`mailto:${CONTACT_EMAIL}`} className="text-sm text-foreground hover:text-primary-gold transition-colors">{CONTACT_EMAIL}</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -107,7 +107,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-foreground/50 text-xs uppercase tracking-wider">Phone</p>
-                    <a href={`tel:${CONTACT_PHONE}`} className="text-sm text-white hover:text-primary-gold transition-colors">{CONTACT_PHONE}</a>
+                    <a href={`tel:${CONTACT_PHONE}`} className="text-sm text-foreground hover:text-primary-gold transition-colors">{CONTACT_PHONE}</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -116,14 +116,14 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-foreground/50 text-xs uppercase tracking-wider">Venue</p>
-                    <p className="text-sm text-white">{EVENT_VENUE}</p>
+                    <p className="text-sm text-foreground">{EVENT_VENUE}</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="rounded-xl border border-border bg-surface p-6">
-              <h3 className="font-heading font-semibold text-white mb-3">Become a Sponsor</h3>
+              <h3 className="font-heading font-semibold text-foreground mb-3">Become a Sponsor</h3>
               <p className="text-foreground/50 text-sm mb-4">Partner with KMA to reach thousands of music lovers across the Rift Valley and beyond.</p>
               <Button variant="outline" className="w-full" asChild>
                 <Link href="/sponsors">View Sponsorship Packages</Link>

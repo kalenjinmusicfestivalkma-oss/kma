@@ -53,7 +53,7 @@ export default function NewsPage() {
       <section className="py-20 px-4 md:px-6 text-center">
         <div className="container mx-auto max-w-2xl">
           <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">Stay Updated</span>
-          <h1 className="font-heading text-5xl md:text-6xl font-bold mt-4 mb-4 text-white">
+          <h1 className="font-heading text-5xl md:text-6xl font-bold mt-4 mb-4 text-foreground">
             Latest <span className="text-primary-gold">News</span>
           </h1>
           <p className="text-foreground/60 text-lg">
@@ -77,7 +77,7 @@ export default function NewsPage() {
                 </span>
                 <span className="text-foreground/40 text-xs">{newsArticles[0].date} · {newsArticles[0].readTime}</span>
               </div>
-              <h2 className="font-heading text-2xl font-bold text-white group-hover:text-primary-gold transition-colors mb-3">
+              <h2 className="font-heading text-2xl font-bold text-foreground group-hover:text-primary-gold transition-colors mb-3">
                 {newsArticles[0].title}
               </h2>
               <p className="text-foreground/60 leading-relaxed mb-5">{newsArticles[0].excerpt}</p>
@@ -103,7 +103,7 @@ export default function NewsPage() {
                     <span className="rounded-full bg-surface-hover px-2.5 py-0.5 text-xs text-foreground/60">{article.category}</span>
                     <span className="text-foreground/30 text-xs">{article.readTime}</span>
                   </div>
-                  <h3 className="font-heading font-semibold text-white text-sm group-hover:text-primary-gold transition-colors leading-snug mb-2">
+                  <h3 className="font-heading font-semibold text-foreground text-sm group-hover:text-primary-gold transition-colors leading-snug mb-2">
                     {article.title}
                   </h3>
                   <p className="text-foreground/50 text-xs leading-relaxed line-clamp-2">{article.excerpt}</p>

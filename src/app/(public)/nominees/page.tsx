@@ -17,7 +17,7 @@ export default function NomineesPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-kalenjin-green/10 to-transparent pointer-events-none" />
         <div className="container mx-auto max-w-3xl relative z-10">
           <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">2026 Nominees</span>
-          <h1 className="font-heading text-5xl md:text-6xl font-bold mt-4 mb-4 text-white">
+          <h1 className="font-heading text-5xl md:text-6xl font-bold mt-4 mb-4 text-foreground">
             Meet the <span className="text-primary-gold">Nominees</span>
           </h1>
           <p className="text-foreground/60 text-lg">
@@ -48,7 +48,7 @@ export default function NomineesPage() {
             return (
               <div key={cat.id}>
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="font-heading text-2xl font-bold text-white">{cat.name}</h2>
+                  <h2 className="font-heading text-2xl font-bold text-foreground">{cat.name}</h2>
                   <Link href={`/categories/${cat.id}`} className="text-primary-gold text-sm hover:underline">
                     View all →
                   </Link>
@@ -65,7 +65,7 @@ export default function NomineesPage() {
                         </div>
                       </div>
                       <div className="p-4">
-                        <h3 className="font-heading font-semibold text-white text-sm group-hover:text-primary-gold transition-colors">{nominee.name}</h3>
+                        <h3 className="font-heading font-semibold text-foreground text-sm group-hover:text-primary-gold transition-colors">{nominee.name}</h3>
                         <p className="text-foreground/40 text-xs mt-0.5">{nominee.genre}</p>
                         <div className="mt-3 space-y-2">
                           <div className="flex items-center justify-between text-xs text-foreground/40">

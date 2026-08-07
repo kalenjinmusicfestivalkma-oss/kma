@@ -21,10 +21,10 @@ export default function AdminTicketsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-heading text-2xl font-bold text-white">Tickets</h1>
+          <h1 className="font-heading text-2xl font-bold text-foreground">Tickets</h1>
           <p className="text-foreground/50 text-sm mt-1">1,240 sold · KES 4.38M total revenue</p>
         </div>
-        <button className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface text-foreground/70 hover:text-white text-sm px-4 py-2 transition-all">
+        <button className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface text-foreground/70 hover:text-foreground text-sm px-4 py-2 transition-all">
           ⬇️ Export
         </button>
       </div>
@@ -36,11 +36,11 @@ export default function AdminTicketsPage() {
           return (
             <div key={t.tier} className="rounded-xl border border-border bg-surface p-5">
               <div className="flex items-center justify-between mb-3">
-                <h3 className="font-heading font-semibold text-white">{t.tier}</h3>
+                <h3 className="font-heading font-semibold text-foreground">{t.tier}</h3>
                 <span className="text-primary-gold text-sm font-semibold">{t.revenue}</span>
               </div>
               <div className="flex items-baseline gap-1 mb-2">
-                <span className="font-heading text-2xl font-bold text-white">{t.sold}</span>
+                <span className="font-heading text-2xl font-bold text-foreground">{t.sold}</span>
                 <span className="text-foreground/40 text-sm">/ {t.capacity} sold</span>
               </div>
               <div className="h-2 rounded-full bg-border overflow-hidden">
@@ -71,7 +71,7 @@ export default function AdminTicketsPage() {
               <tr key={t.id} className="hover:bg-background/20 transition-colors">
                 <td className="px-5 py-3.5 text-foreground/40 font-mono text-xs">{t.id}</td>
                 <td className="px-5 py-3.5">
-                  <p className="font-medium text-white text-xs">{t.buyer}</p>
+                  <p className="font-medium text-foreground text-xs">{t.buyer}</p>
                   <p className="text-foreground/40 text-xs">{t.phone}</p>
                 </td>
                 <td className="px-5 py-3.5">
@@ -82,7 +82,7 @@ export default function AdminTicketsPage() {
                   }`}>{t.tier}</span>
                 </td>
                 <td className="px-5 py-3.5 text-foreground/70 text-xs">{t.qty}</td>
-                <td className="px-5 py-3.5 text-white font-medium text-xs">{t.amount}</td>
+                <td className="px-5 py-3.5 text-foreground font-medium text-xs">{t.amount}</td>
                 <td className="px-5 py-3.5">
                   <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ${
                     t.status === "paid"     ? "bg-kalenjin-green/10 text-kalenjin-green border border-kalenjin-green/20"

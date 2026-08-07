@@ -37,7 +37,7 @@ function AdminSidebar() {
           <span className="font-heading font-bold text-black text-sm">K</span>
         </div>
         <div>
-          <p className="font-heading font-bold text-white text-sm">KMA Admin</p>
+          <p className="font-heading font-bold text-foreground text-sm">KMA Admin</p>
           <p className="text-foreground/40 text-xs">2026 Edition</p>
         </div>
       </div>
@@ -48,7 +48,7 @@ function AdminSidebar() {
           <a
             key={link.href}
             href={link.href}
-            className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-foreground/60 hover:text-white hover:bg-surface-hover transition-all group"
+            className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-foreground/60 hover:text-foreground hover:bg-surface-hover transition-all group"
           >
             <span>{link.icon}</span>
             <span className="font-medium">{link.label}</span>
@@ -60,7 +60,7 @@ function AdminSidebar() {
       <div className="p-3 border-t border-border">
         <a
           href="/"
-          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-foreground/40 hover:text-white hover:bg-surface-hover transition-all"
+          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-foreground/40 hover:text-foreground hover:bg-surface-hover transition-all"
         >
           <span>🌐</span>
           <span>View Site</span>
@@ -81,7 +81,7 @@ function AdminHeader() {
   return (
     <header className="flex items-center justify-between px-6 py-3.5 border-b border-border bg-surface/50 backdrop-blur-sm">
       <div>
-        <p className="font-heading font-semibold text-white text-sm">Admin Panel</p>
+        <p className="font-heading font-semibold text-foreground text-sm">Admin Panel</p>
         <p className="text-foreground/40 text-xs">Kalenjin Music Awards 2026</p>
       </div>
       <div className="flex items-center gap-3">

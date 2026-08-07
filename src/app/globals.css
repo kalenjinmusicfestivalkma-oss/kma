@@ -4,15 +4,15 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 93%;
-    --primary-gold: 43 68% 52%;
-    --primary-gold-hover: 43 60% 44%;
-    --kalenjin-maroon: 0 100% 25%;
-    --kalenjin-green: 146 50% 36%;
-    --surface: 0 0% 9%;
-    --surface-hover: 0 0% 15%;
-    --border: 0 0% 20%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 9%;
+    --primary-gold: 43 74% 45%;
+    --primary-gold-hover: 43 80% 38%;
+    --kalenjin-maroon: 0 80% 40%;
+    --kalenjin-green: 146 60% 40%;
+    --surface: 0 0% 96%;
+    --surface-hover: 0 0% 92%;
+    --border: 0 0% 85%;
   }
   
   body {

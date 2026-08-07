@@ -63,7 +63,7 @@ export default function TicketsPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-primary-gold/5 to-transparent pointer-events-none" />
         <div className="container mx-auto max-w-3xl relative z-10">
           <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">Join The Night</span>
-          <h1 className="font-heading text-5xl md:text-6xl font-bold mt-4 mb-4 text-white">
+          <h1 className="font-heading text-5xl md:text-6xl font-bold mt-4 mb-4 text-foreground">
             Get Your <span className="text-primary-gold">Tickets</span>
           </h1>
           <p className="text-foreground/60 text-lg mb-6">
@@ -92,10 +92,10 @@ export default function TicketsPage() {
                   </div>
                 )}
                 <div className="mb-6">
-                  <h2 className="font-heading text-xl font-bold text-white">{tier.name}</h2>
+                  <h2 className="font-heading text-xl font-bold text-foreground">{tier.name}</h2>
                   <div className="mt-3 flex items-baseline gap-1">
                     <span className="text-foreground/50 text-sm">KES</span>
-                    <span className="font-heading text-4xl font-bold text-white">{tier.price.toLocaleString()}</span>
+                    <span className="font-heading text-4xl font-bold text-foreground">{tier.price.toLocaleString()}</span>
                     <span className="text-foreground/50 text-sm">/ person</span>
                   </div>
                 </div>

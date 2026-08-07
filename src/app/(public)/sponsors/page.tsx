@@ -39,7 +39,7 @@ const sponsorPackages = [
     tier:   "Silver",
     price:  "KES 100,000",
     color:  "border-foreground/30",
-    badge:  "bg-foreground/20 text-white",
+    badge:  "bg-foreground/20 text-foreground",
     perks: [
       "Logo on event programme",
       "4 Standard tickets to the ceremony",
@@ -51,7 +51,7 @@ const sponsorPackages = [
     tier:   "Bronze",
     price:  "KES 50,000",
     color:  "border-amber-700",
-    badge:  "bg-amber-700 text-white",
+    badge:  "bg-amber-700 text-foreground",
     perks: [
       "Logo on event programme",
       "2 Standard tickets to the ceremony",
@@ -76,7 +76,7 @@ export default function SponsorsPage() {
       <section className="py-20 px-4 md:px-6 text-center">
         <div className="container mx-auto max-w-3xl">
           <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">Our Partners</span>
-          <h1 className="font-heading text-5xl md:text-6xl font-bold mt-4 mb-4 text-white">
+          <h1 className="font-heading text-5xl md:text-6xl font-bold mt-4 mb-4 text-foreground">
             Sponsors & <span className="text-primary-gold">Partners</span>
           </h1>
           <p className="text-foreground/60 text-lg">
@@ -89,14 +89,14 @@ export default function SponsorsPage() {
       {/* Current Sponsors */}
       <section className="py-12 px-4 md:px-6 bg-surface/50">
         <div className="container mx-auto max-w-4xl">
-          <h2 className="font-heading text-2xl font-bold text-white text-center mb-8">2026 Sponsors</h2>
+          <h2 className="font-heading text-2xl font-bold text-foreground text-center mb-8">2026 Sponsors</h2>
           <div className="flex flex-wrap justify-center gap-4">
             {currentSponsors.map((s) => (
               <div
                 key={s.name}
                 className="flex flex-col items-center gap-2 rounded-xl border border-border bg-surface px-8 py-5 hover:border-primary-gold/30 transition-colors"
               >
-                <span className="font-heading font-bold text-white text-lg">{s.name}</span>
+                <span className="font-heading font-bold text-foreground text-lg">{s.name}</span>
                 <span className={`text-xs font-semibold ${
                   s.tier === "Platinum" ? "text-cyan-400"
                   : s.tier === "Gold"   ? "text-primary-gold"
@@ -116,7 +116,7 @@ export default function SponsorsPage() {
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
             <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">Partner With Us</span>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3 text-white">Sponsorship Packages</h2>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3 text-foreground">Sponsorship Packages</h2>
             <p className="text-foreground/60 mt-3 max-w-xl mx-auto">
               Align your brand with Kalenjin culture and reach an engaged, passionate audience.
             </p>
@@ -125,7 +125,7 @@ export default function SponsorsPage() {
             {sponsorPackages.map((pkg) => (
               <div key={pkg.tier} className={`rounded-2xl border-2 ${pkg.color} bg-surface p-7`}>
                 <div className="flex items-center justify-between mb-5">
-                  <h3 className="font-heading text-xl font-bold text-white">{pkg.tier} Package</h3>
+                  <h3 className="font-heading text-xl font-bold text-foreground">{pkg.tier} Package</h3>
                   <span className={`rounded-full px-3 py-1 text-xs font-bold ${pkg.badge}`}>{pkg.price}</span>
                 </div>
                 <ul className="space-y-2.5">

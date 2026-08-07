@@ -30,7 +30,7 @@ export default function AdminDashboard() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="font-heading text-2xl font-bold text-white">Dashboard Overview</h1>
+        <h1 className="font-heading text-2xl font-bold text-foreground">Dashboard Overview</h1>
         <p className="text-foreground/50 text-sm mt-1">Last updated: just now</p>
       </div>
 
@@ -54,14 +54,14 @@ export default function AdminDashboard() {
         {/* Recent Votes */}
         <div className="rounded-xl border border-border bg-surface overflow-hidden">
           <div className="flex items-center justify-between px-5 py-4 border-b border-border">
-            <h2 className="font-heading font-semibold text-white">Recent Votes</h2>
+            <h2 className="font-heading font-semibold text-foreground">Recent Votes</h2>
             <a href="/admin/votes" className="text-primary-gold text-xs hover:underline">View all →</a>
           </div>
           <div className="divide-y divide-border">
             {recentVotes.map((v, i) => (
               <div key={i} className="flex items-center justify-between px-5 py-3">
                 <div>
-                  <p className="text-sm text-white font-medium">{v.user}</p>
+                  <p className="text-sm text-foreground font-medium">{v.user}</p>
                   <p className="text-xs text-foreground/40">{v.category} → <span className="text-foreground/60">{v.nominee}</span></p>
                 </div>
                 <span className="text-xs text-foreground/30 shrink-0">{v.time}</span>
@@ -73,7 +73,7 @@ export default function AdminDashboard() {
         {/* Top Nominees */}
         <div className="rounded-xl border border-border bg-surface overflow-hidden">
           <div className="flex items-center justify-between px-5 py-4 border-b border-border">
-            <h2 className="font-heading font-semibold text-white">Top Nominees</h2>
+            <h2 className="font-heading font-semibold text-foreground">Top Nominees</h2>
             <a href="/admin/nominees" className="text-primary-gold text-xs hover:underline">Manage →</a>
           </div>
           <div className="p-5 space-y-4">
@@ -81,7 +81,7 @@ export default function AdminDashboard() {
               <div key={n.name}>
                 <div className="flex items-center justify-between mb-1.5">
                   <div>
-                    <span className="text-sm text-white font-medium">{n.name}</span>
+                    <span className="text-sm text-foreground font-medium">{n.name}</span>
                     <span className="text-foreground/40 text-xs ml-2">{n.category}</span>
                   </div>
                   <span className="text-xs text-primary-gold font-medium">{n.votes.toLocaleString()}</span>
@@ -100,7 +100,7 @@ export default function AdminDashboard() {
 
       {/* Quick Actions */}
       <div className="rounded-xl border border-border bg-surface p-5">
-        <h2 className="font-heading font-semibold text-white mb-4">Quick Actions</h2>
+        <h2 className="font-heading font-semibold text-foreground mb-4">Quick Actions</h2>
         <div className="flex flex-wrap gap-3">
           {[
             { href: "/admin/nominees/new",   label: "➕ Add Nominee"   },

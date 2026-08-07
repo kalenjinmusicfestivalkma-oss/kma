@@ -40,7 +40,7 @@ export function Footer() {
               <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary-gold">
                 <Music className="h-5 w-5 text-black" />
               </div>
-              <span className="font-heading font-bold text-xl text-white">
+              <span className="font-heading font-bold text-xl text-foreground">
                 KMA <span className="text-primary-gold">2026</span>
               </span>
             </Link>
@@ -66,7 +66,7 @@ export function Footer() {
           {/* Link columns */}
           {Object.entries(footerLinks).map(([section, links]) => (
             <div key={section}>
-              <h3 className="font-heading font-semibold text-white mb-4">{section}</h3>
+              <h3 className="font-heading font-semibold text-foreground mb-4">{section}</h3>
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.href}>

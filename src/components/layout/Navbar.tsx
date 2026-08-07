@@ -28,7 +28,7 @@ export function Navbar() {
           <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary-gold">
             <Music className="h-4 w-4 text-black" />
           </div>
-          <span className="font-heading font-bold text-xl text-white group-hover:text-primary-gold transition-colors">
+          <span className="font-heading font-bold text-xl text-foreground group-hover:text-primary-gold transition-colors">
             KMA <span className="text-primary-gold">2026</span>
           </span>
         </Link>
