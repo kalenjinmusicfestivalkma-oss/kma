@@ -87,7 +87,7 @@ export function InstrumentBackground() {
   });
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none bg-gradient-to-br from-kalenjin-maroon/20 via-surface to-primary-gold/10">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10 bg-gradient-to-br from-kalenjin-maroon/10 via-background to-primary-gold/5">
       {/* Massive vibrant blobs to eliminate any pitch-black dark spots */}
       <div className="absolute -top-1/4 -left-1/4 w-[150%] h-[150%] rounded-full bg-kalenjin-maroon/20 blur-[150px]" />
       <div className="absolute top-1/4 -right-1/4 w-[120%] h-[120%] rounded-full bg-kalenjin-green/20 blur-[150px]" />

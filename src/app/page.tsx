@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Trophy, Mic2, Music2, Star } from "lucide-react";
-import { InstrumentBackground } from "@/components/shared/InstrumentBackground";
 
 // ─── Sample Data ─────────────────────────────────────────────────────────────
 
@@ -33,8 +32,6 @@ const sponsors = [
 function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <InstrumentBackground />
-
       <div className="container mx-auto px-4 md:px-6 text-center relative z-10 max-w-5xl">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 rounded-full border border-primary-gold/30 bg-primary-gold/10 px-4 py-1.5 mb-8">
