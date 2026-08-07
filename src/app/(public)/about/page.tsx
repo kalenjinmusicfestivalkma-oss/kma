@@ -33,15 +33,19 @@ export default function AboutPage() {
       <section className="relative py-24 px-4 md:px-6 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-kalenjin-maroon/10 via-background to-kalenjin-green/10 pointer-events-none" />
         <div className="container mx-auto max-w-4xl text-center relative z-10">
-          <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">Our Story</span>
+          <span className="text-primary-gold text-sm font-semibold uppercase tracking-widest">Our Story · Annual Event</span>
           <h1 className="font-heading text-5xl md:text-6xl font-bold mt-4 mb-6 text-foreground">
             About <span className="text-primary-gold">KMA</span>
           </h1>
           <p className="text-foreground/70 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
-            The Kalenjin Music Awards is the premier platform dedicated to celebrating and promoting 
-            outstanding talent in Kalenjin music. Since our founding, we have honored artists who 
-            keep our cultural heritage alive while pushing creative boundaries.
+            The Kalenjin Music Awards is an <strong>annual celebration</strong> dedicated to honouring
+            outstanding talent in Kalenjin music. Held every year since our founding, we gather
+            artists, fans, and cultural champions to recognise those who keep our heritage alive
+            while pushing creative boundaries.
           </p>
+          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-primary-gold/30 bg-primary-gold/10 px-5 py-2 text-sm font-semibold text-primary-gold">
+            🗓️ Held Every Year &nbsp;·&nbsp; 5th Annual Edition in 2026
+          </div>
         </div>
       </section>
 
@@ -54,12 +58,13 @@ export default function AboutPage() {
               Amplifying the Voice of Kalenjin Music
             </h2>
             <p className="text-foreground/60 leading-relaxed mb-4">
-              We believe that music is the heartbeat of culture. The Kalenjin Music Awards was founded 
-              to create a prestigious platform that recognizes artistic excellence, encourages cultural 
-              preservation, and provides a spotlight for both established and emerging artists.
+              We believe that music is the heartbeat of culture. The Kalenjin Music Awards is an 
+              <strong className="text-foreground/80"> annual event</strong> founded to create a prestigious platform
+              that recognises artistic excellence, encourages cultural preservation, and provides a
+              spotlight for both established and emerging artists.
             </p>
             <p className="text-foreground/60 leading-relaxed">
-              Our annual ceremony brings together artists, fans, industry leaders, and cultural 
+              Every year, our ceremony brings together artists, fans, industry leaders, and cultural 
               ambassadors to celebrate what makes Kalenjin music uniquely powerful — its storytelling, 
               rhythm, and deep connection to the Rift Valley way of life.
             </p>
