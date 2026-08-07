@@ -28,9 +28,12 @@ export function Navbar() {
           <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary-gold">
             <Music className="h-4 w-4 text-black" />
           </div>
-          <span className="font-heading font-bold text-xl text-foreground group-hover:text-primary-gold transition-colors">
-            KMA <span className="text-primary-gold">2026</span>
-          </span>
+          <div className="flex flex-col leading-tight">
+            <span className="font-heading font-bold text-sm text-foreground group-hover:text-primary-gold transition-colors tracking-wide">
+              KALENJIN MUSIC FESTIVAL AWARD
+            </span>
+            <span className="text-primary-gold text-xs font-semibold tracking-widest">2026</span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}
